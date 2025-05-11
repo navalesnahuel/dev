@@ -1,0 +1,201 @@
+/**
+ * Rofi theme using the structure from the example,
+ * but with the custom dark gray palette.
+ */
+
+// Define our custom palette as variables for clarity
+* {
+  custom-bg:              #1e1e1e; // Base Background
+  custom-fg:              #a0a0a0; // Default Foreground
+  custom-bg-alt:          #303030; // Darker Gray (Selected BG, Alternate BG)
+  custom-fg-alt:          #e0e0e0; // Bright Gray (Selected FG, Prompt, Pointer)
+  custom-border:          #606060; // Medium Gray (Borders, Separators)
+  custom-highlight:       #87afd7; // Muted Blue (Urgent, Active, HL)
+  custom-dim-fg:          #606060; // Medium Gray (Less important text, Scrollbar)
+
+  // --- Applying custom palette to the theme's variables ---
+
+  // Backgrounds
+  background:                  @custom-bg;
+  normal-background:           @custom-bg;
+  alternate-normal-background: @custom-bg;       // Use same bg for non-alternating look
+  active-background:           @custom-bg;
+  urgent-background:           @custom-bg;
+  alternate-active-background: @custom-bg-alt;   // Can use alt bg for subtle difference if desired
+  alternate-urgent-background: @custom-bg-alt;   // Can use alt bg for subtle difference if desired
+  selected-normal-background:  @custom-bg-alt;   // Selected BG
+  selected-active-background:  @custom-highlight; // Use Highlight color for Selected + Active BG
+  selected-urgent-background:  @custom-highlight; // Use Highlight color for Selected + Urgent BG
+
+  // Foregrounds (Text)
+  foreground:                  @custom-fg;
+  normal-foreground:           @custom-fg;
+  alternate-normal-foreground: @custom-fg;
+  lightfg:                     @custom-fg-alt;   // Variable for bright text
+  selected-normal-foreground:  @custom-fg-alt;   // Bright text on selected bg
+  active-foreground:           @custom-highlight; // Highlight color for Active text
+  alternate-active-foreground: @custom-highlight;
+  urgent-foreground:           @custom-highlight; // Highlight color for Urgent text
+  alternate-urgent-foreground: @custom-highlight;
+  selected-active-foreground:  @custom-bg;       // Dark text on highlight background
+  selected-urgent-foreground:  @custom-bg;       // Dark text on highlight background
+
+  // Other Colors
+  separatorcolor:              @custom-border;   // Border color for separators
+  border-color:                @custom-border;   // Border color for window
+  background-color:            transparent;     // Make elements inherit or be transparent by default
+
+  // General Settings
+  spacing:                     2;
+  font:                        "Inter Medium 12"; // MATCH YOUR I3 FONT
+}
+
+// --- Element Styling (Mostly inherits from * block) ---
+
+element {
+    padding: 4px 8px; // Increased padding slightly
+    cursor:  pointer;
+    spacing: 5px ;
+    border:  0;
+    border-radius: 3px; // Added slight rounding
+}
+element normal.normal {
+    background-color: @normal-background;
+    text-color:       @normal-foreground;
+}
+element normal.urgent {
+    // background-color: @urgent-background; // Keep bg normal
+    text-color:       @urgent-foreground;     // Just change text color
+}
+element normal.active {
+    // background-color: @active-background; // Keep bg normal
+    text-color:       @active-foreground;     // Just change text color
+}
+element selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+    font:             "inherit bold"; // Add bold to selected
+}
+element selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
+    font:             "inherit bold"; // Add bold to selected
+}
+element selected.active {
+    background-color: @selected-active-background;
+    text-color:       @selected-active-foreground;
+    font:             "inherit bold"; // Add bold to selected
+}
+
+
+element-text {
+    background-color: transparent;
+    cursor:           inherit;
+    highlight:        inherit; // Rofi handles highlight rendering based on theme colors
+    text-color:       inherit;
+    vertical-align:   0.5; // Center text
+}
+element-icon {
+    background-color: transparent;
+    size:             1.2em ; // Slightly larger icon size if shown
+    cursor:           inherit;
+    text-color:       inherit;
+}
+
+// --- Window and Layout ---
+
+window {
+    padding:          8px; // Increased padding
+    background-color: @custom-bg;
+    border:           1px; // Use theme border-color
+    border-color:     @border-color;
+    width:            50%; // Adjust as needed
+    border-radius:    8px; // Slight rounding on window
+}
+
+mainbox {
+    padding: 5px; // Add some padding inside mainbox
+    border:  0;
+    spacing: 8px; // Add spacing between inputbar and listview
+}
+
+message {
+    padding:      5px ;
+    border-color: @separatorcolor;
+    border:       1px solid 0px 0px ; // Simple top border line
+    background-color: @custom-bg-alt; // Use alternate bg for message box
+    text-color: @custom-fg;
+}
+
+textbox { // General text box styling (like in message)
+    text-color: @foreground;
+}
+
+listview {
+    padding:      2px 0px 0px ;
+    scrollbar:    false; // Disabled scrollbar for minimalist look
+    // border-color: @separatorcolor; // Remove border lines
+    spacing:      3px ;  // Spacing between elements
+    lines:        8;     // Number of lines visible
+    fixed-height: false;
+    border:       0; // Remove listview border
+}
+
+// --- Scrollbar (If enabled) ---
+scrollbar {
+    width:        4px ;
+    padding:      0;
+    handle-width: 8px ;
+    border:       0;
+    handle-color: @custom-dim-fg; // Use dim gray for handle
+    background-color: @custom-bg; // Match window bg
+}
+
+// --- Sidebar (If used by mode) ---
+sidebar {
+    border-color: @separatorcolor;
+    border:       1px solid 0px 0px ; // Simple top border
+}
+
+button {
+    cursor:     pointer;
+    spacing:    0;
+    padding:    4px 8px;
+    text-color: @normal-foreground;
+    border-radius: 3px;
+}
+button selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+
+// --- Input Bar ---
+
+inputbar {
+    padding:    5px; // Padding inside inputbar
+    spacing:    5px; // Spacing between elements in inputbar
+    text-color: @custom-fg-alt; // Bright text for input
+    background-color: @custom-bg-alt; // Use alternate bg for input bar
+    border-radius: 3px;
+    children:   [ prompt, entry, case-indicator ]; // Simplified children
+}
+
+case-indicator { // e.g., Caps Lock indicator
+    spacing:    0;
+    text-color: @custom-fg-alt;
+}
+
+entry { // The text typing area
+    text-color:        @custom-fg-alt; // Bright text
+    cursor:            text;
+    spacing:           0;
+    placeholder-color: @custom-dim-fg; // Dim gray for placeholder
+    placeholder:       "Search...";   // Changed placeholder text
+}
+
+prompt {
+    enabled: false;
+    spacing:    0;
+    text-color: @custom-fg-alt; // Bright text for prompt
+}
+

@@ -1,0 +1,39 @@
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# Config syntax crash course
+# ==========================
+
+window-padding-x = 6   
+window-padding-y = 4,0
+window-padding-balance = false
+window-decoration = false
+
+theme = gruvbox-material.conf
+cursor-style = block
+cursor-style-blink = false
+font-family = "Monaspace Argon"
+
+font-style = Medium
+font-size = 17
+font-feature = calt, liga, ss04, ss05, ss06, ss07, ss08, ss09
+
+cursor-style = block
+
+keybind = ctrl+v=paste_from_clipboard
+keybind = ctrl+up=increase_font_size:1
+keybind = ctrl+down=decrease_font_size:1
+
+alpha-blending = linear-corrected
+
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+mouse-hide-while-typing = true
+
+confirm-close-surface = false
+
+command=tmux

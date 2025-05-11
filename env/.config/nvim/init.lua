@@ -1,0 +1,5 @@
+require("config.highlights")
+require("config.options")
+require("config.lazy")
+vim.cmd.colorscheme("gruvbox-material")
+require("config.keymaps")
