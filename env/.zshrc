@@ -11,7 +11,7 @@ autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b '
 setopt PROMPT_SUBST
-PROMPT='%F{220}%n%f %F{254}%1~%f %F{168}${vcs_info_msg_0_}%f%F{15}→%f '
+PROMPT='%F{167}%n%f %F{223}%1~%f %F{108}${vcs_info_msg_0_}%f%F{250}→%f '
 
 # Zoxide (smarter cd)
 eval "$(zoxide init zsh)"
