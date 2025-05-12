@@ -1,3 +1,11 @@
 #!/usr/bin/env bash
 
-tar -C $HOME/.local -xzf go1.24.3.linux-amd64.tar.gz
+GO_VERSION="1.24.3"
+ARCH="amd64"
+OS="linux"
+INSTALL_DIR="$HOME/.local"
+GO_DIR="$INSTALL_DIR/go"
+
+wget -q "https://golang.org/dl/go${GO_VERSION}.${OS}-${ARCH}.tar.gz" -O /tmp/go.tar.gz
+rm -rf "$GO_DIR"
+tar -C "$INSTALL_DIR" -xzf /tmp/go.tar.gz
