@@ -6,6 +6,7 @@ sudo apt install -y llvm lld llvm-dev liblld-dev clang blueprint-compiler gettex
 wget https://launchpadlibrarian.net/772282385/blueprint-compiler_0.16.0-1_all.deb -O /tmp/blueprint-compiler_0.16.0-1_all.deb
 sudo dpkg -i /tmp/blueprint-compiler_0.16.0-1_all.deb
 sudo apt --fix-broken install -y
+rm /tmp/blueprint-compiler_0.16.0-1_all.deb
 
 wget https://ziglang.org/download/0.14.0/zig-linux-x86_64-0.14.0.tar.xz -O /tmp/zig.tar.xz
 tar -xf /tmp/zig.tar.xz -C $HOME/.local
