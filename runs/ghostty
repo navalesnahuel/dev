@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
 sudo apt update
-sudo apt install llvm lld llvm-dev liblld-dev clang libclang-dev libglib2.0-dev libgtk-4-dev libadwaita-1-dev git
 
-wget https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.13.0.tar.xz -O /tmp/zig.tar.xz
-tar -xvf /tmp/zig.tar.xz -C $HOME/.local
-export PATH="$HOME/.local/zig-linux-x86_64-0.13.0:$PATH"
+sudo apt install -y llvm lld llvm-dev liblld-dev clang blueprint-compiler gettext libclang-dev libglib2.0-dev libgtk-4-dev libadwaita-1-dev git
+wget https://launchpadlibrarian.net/772282385/blueprint-compiler_0.16.0-1_all.deb -O /tmp/blueprint-compiler_0.16.0-1_all.deb
+sudo dpkg -i /tmp/blueprint-compiler_0.16.0-1_all.deb
+sudo apt --fix-broken install -y
 
-git clone https://github.com/ghostty-org/ghostty.git $HOME/personal/ghostty
+wget https://ziglang.org/download/0.14.0/zig-linux-x86_64-0.14.0.tar.xz -O /tmp/zig.tar.xz
+tar -xf /tmp/zig.tar.xz -C $HOME/.local
+export PATH="$HOME/.local/zig-linux-x86_64-0.14.0:$PATH"
+
+git clone https://github.com/ghostty-org/ghostty $HOME/personal/ghostty
 
 (
     cd $HOME/personal/ghostty

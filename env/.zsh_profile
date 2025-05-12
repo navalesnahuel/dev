@@ -30,7 +30,7 @@ addToPathFront $HOME/.local/apps/
 addToPathFront "$JAVA_HOME/bin"
 addToPathFront /opt/nvim-linux64/bin
 addToPathFront $HOME/.deno/bin
-addToPathFront "$HOME/.local/zig"
+addToPathFront "$HOME/.local/zig-linux-x86_64-0.14.0"
 
 addToPath $HOME/.cargo/bin
 addToPath $HOME/personal/ghostty/zig-out/bin
