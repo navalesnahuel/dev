@@ -1,7 +1,7 @@
 export XDG_CONFIG_HOME=$HOME/.config
 
 export GIT_EDITOR=nvim
-export GOPATH=$HOME/.local/go
+export GOROOT="$HOME/.local/go"
 export DENO_INSTALL="$HOME/.deno"
 export N_PREFIX="$HOME/.local/n"
 export DEV_ENV_HOME="$HOME/personal/dev"
@@ -19,8 +19,7 @@ addToPathFront() {
     fi
 }
 
-addToPathFront $HOME/.local/go/bin
-addToPathFront /usr/local/go/bin
+addToPathFront "$GOROOT/bin" 
 addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.local/apps
 addToPathFront $HOME/.local/scripts
@@ -30,12 +29,12 @@ addToPathFront $HOME/.local/n/bin/
 addToPathFront $HOME/.local/apps/
 addToPathFront "$JAVA_HOME/bin"
 addToPathFront /opt/nvim-linux64/bin
-
 addToPathFront $HOME/.deno/bin
+addToPathFront "$HOME/.local/zig"
+
 addToPath $HOME/.cargo/bin
 addToPath $HOME/personal/ghostty/zig-out/bin
 addToPath $HOME/.local/personal
-addToPathFront "$HOME/.local/zig"
 
 alias gt='NODE_OPTIONS="--no-deprecation" gt'
 

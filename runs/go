@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 
-rm -rf /usr/local/go && tar -C $HOME/.local/go -xzf go1.24.3.linux-amd64.tar.gz
-export PATH="$HOME/.local/go/bin:$PATH"
+tar -C $HOME/.local -xzf go1.24.3.linux-amd64.tar.gz
