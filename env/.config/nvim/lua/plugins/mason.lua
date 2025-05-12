@@ -1,73 +1,74 @@
 return {
-    "williamboman/mason.nvim",
-    version = "1.11.0",
-    cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate" },
-    event = { "VeryLazy" },
-    dependencies = {
-        {
-            "williamboman/mason-lspconfig.nvim",
-            lazy = true,
-            version = "1.32.0",
-        },
-        {
-            "WhoIsSethDaniel/mason-tool-installer.nvim",
-            lazy = true,
-        },
-    },
-    config = function()
-        vim.defer_fn(function()
-            local mason = require("mason")
+	"williamboman/mason.nvim",
+	version = "1.11.0",
+	cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate" },
+	event = { "VeryLazy" },
+	dependencies = {
+		{
+			"williamboman/mason-lspconfig.nvim",
+			lazy = true,
+			version = "1.32.0",
+		},
+		{
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			lazy = true,
+		},
+	},
+	config = function()
+		vim.defer_fn(function()
+			local mason = require("mason")
 
-            mason.setup({
-                ui = {
-                    icons = {
-                        package_installed = "✓",
-                        package_pending = "➜",
-                        package_uninstalled = "✗",
-                    },
-                },
-            })
+			mason.setup({
+				ui = {
+					icons = {
+						package_installed = "✓",
+						package_pending = "➜",
+						package_uninstalled = "✗",
+					},
+				},
+			})
 
-            vim.defer_fn(function()
-                local mason_lspconfig = require("mason-lspconfig")
+			vim.defer_fn(function()
+				local mason_lspconfig = require("mason-lspconfig")
 
-                mason_lspconfig.setup({
-                    ensure_installed = {
-                        "ts_ls",
-                        "html",
-                        "cssls",
-                        "pbls",
-                        "tailwindcss",
-                        "gopls",
-                        "svelte",
-                        "lua_ls",
-                        "graphql",
-                        "prismals",
-                        "pyright",
-                    },
-                    automatic_installation = true,
-                })
+				mason_lspconfig.setup({
+					ensure_installed = {
+						"ts_ls",
+						"html",
+						"cssls",
+						"pbls",
+						"tailwindcss",
+						"gopls",
+						"svelte",
+						"bashls",
+						"lua_ls",
+						"graphql",
+						"prismals",
+						"pyright",
+					},
+					automatic_installation = true,
+				})
 
-                vim.defer_fn(function()
-                    local mason_tool_installer = require("mason-tool-installer")
+				vim.defer_fn(function()
+					local mason_tool_installer = require("mason-tool-installer")
 
-                    mason_tool_installer.setup({
-                        ensure_installed = {
-                            "prettier",
-                            "stylua",
-                            "isort",
-                            "black",
-                            "shfmt",
-                            "pylint",
-                            "eslint_d",
-                            "eslint",
-                            "ruff",
-                            "golangci-lint",
-                            "gofumpt",
-                        },
-                    })
-                end, 100)
-            end, 50)
-        end, 0)
-    end,
+					mason_tool_installer.setup({
+						ensure_installed = {
+							"prettier",
+							"stylua",
+							"isort",
+							"black",
+							"shfmt",
+							"pylint",
+							"eslint_d",
+							"eslint",
+							"ruff",
+							"golangci-lint",
+							"gofumpt",
+						},
+					})
+				end, 100)
+			end, 50)
+		end, 0)
+	end,
 }
