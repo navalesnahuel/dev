@@ -1,7 +1,7 @@
 export XDG_CONFIG_HOME=$HOME/.config
 
-export GOPATH=$HOME/.local/go
 export GIT_EDITOR=nvim
+export GOPATH=$HOME/.local/go
 export DENO_INSTALL="$HOME/.deno"
 export N_PREFIX="$HOME/.local/n"
 export DEV_ENV_HOME="$HOME/personal/dev"
@@ -19,6 +19,8 @@ addToPathFront() {
     fi
 }
 
+addToPathFront $HOME/.local/go/bin
+addToPathFront /usr/local/go/bin
 addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.local/apps
 addToPathFront $HOME/.local/scripts
@@ -28,8 +30,6 @@ addToPathFront $HOME/.local/n/bin/
 addToPathFront $HOME/.local/apps/
 addToPathFront "$JAVA_HOME/bin"
 addToPathFront /opt/nvim-linux64/bin
-addToPathFront "$GOPATH/bin"
-addToPathFront "/usr/local/go/bin"
 
 addToPathFront $HOME/.deno/bin
 addToPath $HOME/.cargo/bin
