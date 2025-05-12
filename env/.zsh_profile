@@ -1,5 +1,5 @@
 export XDG_CONFIG_HOME=$HOME/.config
-DEV_ENV=$HOME/personal/dev
+export DEV_ENV=$HOME/personal/dev
 
 export GIT_EDITOR=nvim
 export GOROOT="$HOME/.local/go"
