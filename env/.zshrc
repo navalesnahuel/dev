@@ -6,24 +6,12 @@ source ~/.zsh_profile
 export BAT_STYLE="changes,header"
 export BAT_PAGER="less -FRX"
 
-# OH MY ZSH SETUP
-if [ -d "$HOME/.oh-my-zsh" ]; then
-    export ZSH="$HOME/.oh-my-zsh"
-    plugins=(git tmux tldr)
-    source $ZSH/oh-my-zsh.sh
-fi
-
 # PROMPT CONFIGURATION
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b '
 setopt PROMPT_SUBST
 PROMPT='%F{220}%n%f %F{254}%1~%f %F{168}${vcs_info_msg_0_}%f%F{15}→%f '
-
-# Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Zoxide (smarter cd)
 eval "$(zoxide init zsh)"
