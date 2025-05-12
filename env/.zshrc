@@ -1,19 +1,6 @@
-# Neovim
-[ -d "/opt/nvim-linux64/bin" ] && export PATH="$PATH:/opt/nvim-linux64/bin"
-
-# Zig
-export PATH="$PATH:/usr/local/zig"
-
-# Go
-if [ -d "/usr/local/go" ]; then
-    export GOROOT="/usr/local/go"
-    export GOPATH="$HOME/personal/go"
-    export PATH="$GOROOT/bin:$GOPATH/bin:$HOME/.local/bin:$PATH"
-fi
-
-# Java
-export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
-export PATH="$JAVA_HOME/bin:$PATH"
+export ZSH="$HOME/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+source ~/.zsh_profile
 
 # ENVIRONMENT VARIABLES
 export BAT_STYLE="changes,header"

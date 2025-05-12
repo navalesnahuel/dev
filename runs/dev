@@ -3,11 +3,7 @@
 sudo apt update && sudo apt upgrade -y
 
 sudo apt install -y \
-  git ripgrep pavucontrol xclip jq tldr \
-  shutter python3-pip rofi gimp \
-  htop curl wget unzip fzf \
-  bat eza obsidian picom \
-  stylua lazygit
-
-
-
+    git ripgrep pavucontrol xclip jq tldr \
+    shutter python3-pip rofi gimp \
+    htop curl wget unzip fzf \
+    bat eza picom zoxide

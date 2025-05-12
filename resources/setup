@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 sudo apt -y update
 
-if ! command -v git &> /dev/null; then
+if ! command -v git &>/dev/null; then
     sudo apt -y install git
 fi
 
@@ -12,5 +12,9 @@ fi
 git clone https://github.com/navalesnahuel/dev $HOME/personal/dev
 
 pushd $HOME/personal/dev
+chmod +x ./run ./dev-env
+chmod +x ./runs/*
+
+export DEV_ENV="$(pwd)"
 ./run
 popd

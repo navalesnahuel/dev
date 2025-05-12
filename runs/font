@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+git clone https://github.com/githubnext/monaspace.git $HOME/personal/monaspace
+(
+    cd $HOME/personal/monaspace
+    bash util/install_linux.sh
+)
