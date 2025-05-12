@@ -1,14 +1,5 @@
 export XDG_CONFIG_HOME=$HOME/.config
 
-PERSONAL=$XDG_CONFIG_HOME/personal
-DEV_ENV=$HOME/dev
-for i in `find -L $PERSONAL`; do
-    source $i
-done
-
-## All that sweet sweet fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 export GOPATH=$HOME/.local/go
 export GIT_EDITOR=nvim
 export DENO_INSTALL="$HOME/.deno"
@@ -37,14 +28,14 @@ addToPathFront $HOME/.local/n/bin/
 addToPathFront $HOME/.local/apps/
 addToPathFront "$JAVA_HOME/bin"
 addToPathFront /opt/nvim-linux64/bin
+addToPathFront "$GOPATH/bin"
+addToPathFront "/usr/local/go/bin"
 
-addToPathFront $HOME/.local/go/bin
-addToPathFront /usr/local/go/bin
 addToPathFront $HOME/.deno/bin
 addToPath $HOME/.cargo/bin
 addToPath $HOME/personal/ghostty/zig-out/bin
 addToPath $HOME/.local/personal
-addToPathFront $HOME/.local/zig true 
+addToPathFront "$HOME/.local/zig"
 
 alias gt='NODE_OPTIONS="--no-deprecation" gt'
 
