@@ -3,5 +3,5 @@
 pushd ~/personal/dev
 git add .
 git commit -m 'automated dev commit'
-git push
+git push origin main
 popd
