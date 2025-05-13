@@ -11,6 +11,7 @@ return {
 					"html",
 					"javascript",
 					"json",
+					"svelte",
 					"lua",
 					"markdown",
 					"markdown_inline",

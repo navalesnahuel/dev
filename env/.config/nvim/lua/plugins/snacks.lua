@@ -9,12 +9,15 @@ return {
 		dashboard = { enabled = true },
 		input = { enabled = true },
 		lazygit = { enabled = true },
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+		},
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = false },
 		gitbrowse = { enabled = true },
 	},
+
 	keys = {
 		-- LSP
 		{
@@ -101,26 +104,13 @@ return {
 			end,
 			desc = "Grep",
 		},
+
 		{
-			"<leader>:",
+			"<leader>fs",
 			function()
-				Snacks.picker.command_history()
+				Snacks.picker.grep()
 			end,
-			desc = "Command History",
-		},
-		{
-			"<leader>,",
-			function()
-				Snacks.picker.buffers()
-			end,
-			desc = "Buffers",
-		},
-		{
-			"<leader>fc",
-			function()
-				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
-			end,
-			desc = "Find Config File",
+			desc = "Grep Files",
 		},
 		{
 			"<leader>ff",
@@ -130,25 +120,19 @@ return {
 			desc = "Find Files",
 		},
 		{
+			"<leader>fw",
+			function()
+				Snacks.picker.grep_word()
+			end,
+			desc = "Visual selection or word",
+			mode = { "n", "x" },
+		},
+		{
 			"<leader>fg",
 			function()
 				Snacks.picker.git_files()
 			end,
 			desc = "Find Git Files",
-		},
-		{
-			"<leader>fp",
-			function()
-				Snacks.picker.projects()
-			end,
-			desc = "Projects",
-		},
-		{
-			"<leader>fr",
-			function()
-				Snacks.picker.recent()
-			end,
-			desc = "Recent",
 		},
 
 		-- Grep/Search
@@ -160,74 +144,63 @@ return {
 			desc = "Buffer Lines",
 		},
 		{
-			"<leader>sC",
+			"<leader>hc",
 			function()
 				Snacks.picker.commands()
 			end,
 			desc = "Commands",
 		},
 		{
-			"<leader>sD",
+			"<leader>xX",
 			function()
-				Snacks.picker.diagnostics()
+				Snacks.picker.diagnostics({
+					layout = {
+						preset = "default",
+						preview = false,
+					},
+				})
 			end,
 			desc = "Diagnostics",
 		},
 		{
-			"<leader>sd",
+			"<leader>xx",
 			function()
-				Snacks.picker.diagnostics_buffer()
+				Snacks.picker.diagnostics_buffer({
+					layout = {
+						preset = "default",
+						preview = false,
+					},
+				})
 			end,
 			desc = "Buffer Diagnostics",
 		},
 		{
-			"<leader>sh",
+			"<leader>hh",
 			function()
 				Snacks.picker.help()
 			end,
 			desc = "Help Pages",
 		},
 		{
-			"<leader>sH",
+			"<leader>hH",
 			function()
 				Snacks.picker.highlights()
 			end,
 			desc = "Highlights",
 		},
 		{
-			"<leader>si",
-			function()
-				Snacks.picker.icons()
-			end,
-			desc = "Icons",
-		},
-		{
-			"<leader>sj",
-			function()
-				Snacks.picker.jumps()
-			end,
-			desc = "Jumps",
-		},
-		{
-			"<leader>sk",
+			"<leader>hk",
 			function()
 				Snacks.picker.keymaps()
 			end,
 			desc = "Keymaps",
 		},
 		{
-			"<leader>sM",
+			"<leader>hM",
 			function()
 				Snacks.picker.man()
 			end,
 			desc = "Man Pages",
-		},
-		{
-			"<leader>sp",
-			function()
-				Snacks.picker.lazy()
-			end,
-			desc = "Search for Plugin Spec",
 		},
 		{
 			"<leader>su",
@@ -237,7 +210,7 @@ return {
 			desc = "Undo History",
 		},
 		{
-			"<leader>uC",
+			"<leader>hC",
 			function()
 				Snacks.picker.colorschemes()
 			end,

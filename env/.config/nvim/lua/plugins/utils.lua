@@ -24,7 +24,7 @@ return {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		opts = {
-			window = {
+			win = {
 				border = "none", -- Sin bordes
 				padding = { 1, 1 }, -- Padding mínimo (Vertical, Horizontal)
 			},
