@@ -1,85 +1,96 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# FZF core setup
-export FZF_DEFAULT_COMMAND='fdfind --type f'
-export FZF_CTRL_T_COMMAND='fdfind --type f'
-
 # FZF appearance
 export FZF_DEFAULT_OPTS=" \
+--tmux \
+--ansi \
 --border=rounded \
---height=40% \
---no-info \
+--height=100% \
 --prompt='▶ ' \
---pointer='-' \
+--pointer='>' \
 --separator="─" \
---scrollbar="" \
---color=bg:#1e1e1e,fg:#a0a0a0 \
---color=bg+:#303030,fg+:#e0e0e0:bold \
---color=hl:#87afd7:bold \
---color=hl+:#e0e0e0:bold \
---color=pointer:#e0e0e0:bold \
---color=prompt:#e0e0e0,spinner:#606060,header:#606060 \
---color=border:#1e1e1e,label:#a0a0a0,gutter:#1e1e1e \
---no-hscroll \
+--no-mouse \
 --preview-window=hidden \
 --cycle \
---tabstop=4 \
---layout=reverse
-"
+--layout=reverse"
+
+
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
+" --color=bg+:#232530,bg:#1c1e26,spinner:#24a8b4,hl:#df5273"\
+" --color=fg:#9da0a2,header:#df5273,info:#efb993,pointer:#24a8b4"\
+" --color=marker:#24a8b4,fg+:#dcdfe4,prompt:#efb993,hl+:#df5273,gutter:#1c1e26"
+
+# Use ~~ as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER='~~'
+export FZF_COMPLETION_OPTS='--border --info=inline'
+export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden'
+export FZF_COMPLETION_DIR_OPTS='--walker dir,follow'
+export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 
 # Directory navigation - with depth limit and cache
-dir_jumper() {
-  local selected_dir
-  selected_dir=$(fd --type d --hidden \
-    -E ".git" \
-    -E ".git/**" \
-    -E "node_modules" \
-    -E "node_modules/**" \
-    -E ".cache" \
-    -E ".cache/**" \
-    -E ".venv" \
-    -E ".vim" \
-    -E ".venv/**" \
-    -E ".vscode" \
-    -E ".vscode/**" \
-    -E "go/pkg" \
-    -E "go/pkg/**" \
-    -E ".npm" \
-    -E ".npm/**" \
-    -E "dist" \
-    -E "dist/**" \
-    -E "build" \
-    -E "build/**" \
-    -E ".idea" \
-    -E "__pycache__" | fzf)
-  [[ -n "$selected_dir" ]] && cd "$selected_dir"
+fcd() {
+  local dir
+  dir=$(fdfind --type d --hidden --strip-cwd-prefix --follow \
+    -E ".git" -E "node_modules" -E ".cache" -E ".venv" \
+    -E ".vim" -E ".vscode" -E "go/pkg" -E ".npm" \
+    -E "dist" -E "build" -E ".idea" -E "__pycache__" \
+    | command fzf) && cd "$dir"
+  zle reset-prompt
 }
-bindkey -s '^G' 'dir_jumper\n'
+
+zle -N fcd
+bindkey '^F' fcd
+
+fcp() {
+  local files
+  files=$(fd . --type f --hidden ~ | fzf --multi --prompt="files to copy > ")
+
+  if [[ -n "$files" ]]; then
+    echo "$files" | while IFS= read -r file; do
+      cp -v "$file" "./$(basename "$file")"
+    done
+  else
+    echo "select a file next time xD."
+  fi
+}
+
+dcp() {
+  local dirs
+  dirs=$(fd . --type d --hidden ~ | fzf --multi --prompt="folders to copy > ")
+
+  if [[ -n "$dirs" ]]; then
+    echo "$dirs" | while IFS= read -r dir; do
+      cp -vr "$dir" "./$(basename "$dir")"
+    done
+  else
+    echo "select a dir next time xD."
+  fi
+}
 
 # Process management - with optimized process listing and better formatting
-process_killer() {
+fkill() {
   local pid
-  pid=$(ps -eo pid,pcpu,pmem,comm --sort=-pcpu | 
-         grep -v PID | 
-         head -30 | 
-         fzf --header="PID %CPU %MEM COMMAND" --header-lines=0 |
-         awk '{print $1}')
-  [[ -n "$pid" ]] && kill -9 "$pid"
-}
-bindkey -s '^K' 'process_killer\n'
+  if [[ $EUID -ne 0 ]]; then
+    pid=$(ps -u "$UID" -o pid,ppid,comm,%cpu,%mem --sort=-%mem \
+      | fzf --multi \
+      | awk '{print $1}')
+  else
+    pid=$(ps -eo pid,ppid,comm,%cpu,%mem --sort=-%mem \
+      | fzf \
+      | awk '{print $1}')
+  fi
 
-# Git operations - with branch info and faster checkout
-git_checkout() {
-  local branch
-  branch=$(git branch --sort=-committerdate --format='%(refname:short) (%(committerdate:relative))' 2>/dev/null | 
-           fzf --no-multi --header="Select branch to checkout" | 
-           awk '{print $1}')
-  [[ -n "$branch" ]] && git checkout "$branch"
+  [[ -n "$pid" ]] && echo "$pid" | xargs kill -"${1:-9}"
 }
-bindkey -s '^B' 'git_checkout\n'
+
+
+zle -N fkill
+bindkey '^K' fkill
 
 # Enhanced with container info and faster listings
-fzf_docker() {
+fdocker() {
   local action
   action=$(echo -e "ps\nlogs\nexec\nstop\nstart\nrestart\nrm\nstats" | 
            fzf --prompt="Docker action: " --height=10%)
@@ -104,5 +115,3 @@ fzf_docker() {
       [[ -n "$container" ]] && docker "$action" "${container%% *}" ;;
   esac
 }
-# Docker shortcut
-bindkey -s '^D' 'fzf_docker\n'

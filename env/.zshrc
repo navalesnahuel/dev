@@ -32,6 +32,3 @@ alias cat="bat --paging=never"
 alias rg='rg --no-ignore'
 alias cd="z"
 alias kubectl="minikube kubectl --"
-
-# shortcuts
-bindkey -s '^U' 'bash ~/toggle-theme.sh\n'
