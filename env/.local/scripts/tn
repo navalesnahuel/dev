@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Si se pasa un argumento, lo usa; si no, usa el directorio actual
+if [ -n "$1" ]; then
+    ZOXIDE_RESULT=$(zoxide query "$1")
+else
+    ZOXIDE_RESULT="$PWD"
+fi
+
+if [ -z "$ZOXIDE_RESULT" ]; then
+    exit 0
+fi
+
+FOLDER=$(basename "$ZOXIDE_RESULT")
+
+SESSION=$(tmux list-sessions 2>/dev/null | awk -F: -v folder="$FOLDER" '$1 == folder {print $1}')
+
+if [ -z "$TMUX" ]; then
+    if [ -z "$SESSION" ]; then
+        cd "$ZOXIDE_RESULT" || exit
+        tmux new-session -s "$FOLDER"
+    else
+        tmux attach -t "$SESSION"
+    fi
+else
+    if [ -z "$SESSION" ]; then
+        cd "$ZOXIDE_RESULT" || exit
+        tmux new-session -d -s "$FOLDER"
+    fi
+    tmux switch-client -t "$FOLDER"
+fi

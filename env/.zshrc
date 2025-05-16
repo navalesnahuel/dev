@@ -32,3 +32,4 @@ alias cat="bat --paging=never"
 alias rg='rg --no-ignore'
 alias cd="z"
 alias kubectl="minikube kubectl --"
+setopt IGNORE_EOF
