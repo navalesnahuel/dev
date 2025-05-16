@@ -33,7 +33,6 @@ return {
 					prepend_args = {
 						"--tab-width",
 						"4",
-						"--no-config",
 					},
 				},
 			},

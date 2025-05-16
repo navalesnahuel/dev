@@ -106,7 +106,7 @@ return {
 		},
 
 		{
-			"<leader>fs",
+			"<leader>fw",
 			function()
 				Snacks.picker.grep()
 			end,
@@ -120,7 +120,7 @@ return {
 			desc = "Find Files",
 		},
 		{
-			"<leader>fw",
+			"<leader>fs",
 			function()
 				Snacks.picker.grep_word()
 			end,

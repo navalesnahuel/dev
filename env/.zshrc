@@ -30,7 +30,6 @@ alias fd="fdfind --hidden --follow --exclude .git"
 alias bat="batcat"
 alias cat="bat --paging=never"
 alias rg='rg --no-ignore'
-alias tldr="tldr -t base16"
 alias cd="z"
 alias kubectl="minikube kubectl --"
 

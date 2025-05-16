@@ -7,7 +7,7 @@ export FZF_CTRL_T_COMMAND='fdfind --type f'
 # FZF appearance
 export FZF_DEFAULT_OPTS=" \
 --border=rounded \
---height=20% \
+--height=40% \
 --no-info \
 --prompt='▶ ' \
 --pointer='-' \
@@ -26,46 +26,6 @@ export FZF_DEFAULT_OPTS=" \
 --tabstop=4 \
 --layout=reverse
 "
-
-
-# Neovim file selection
-nvim_finder() {
-  local selected_file
-  selected_file=$(fd --type f --hidden \
-    -E ".git" \
-    -E ".git/**" \
-    -E "node_modules" \
-    -E "node_modules/**" \
-    -E ".cache" \
-    -E ".cache/**" \
-    -E ".venv" \
-    -E ".venv/**" \
-    -E ".vscode" \
-    -E ".vim" \
-    -E ".vscode/**" \
-    -E "go/pkg" \
-    -E "go/pkg/**" \
-    -E ".npm" \
-    -E ".npm/**" \
-    -E "dist" \
-    -E "dist/**" \
-    -E "build" \
-    -E "build/**" \
-    -E ".idea" \
-    -E "__pycache__" \
-    -E "*.pyc" \
-    -E "*.o" \
-    -E "*.so" \
-    -E "*.dylib" \
-    -E "*.dll" \
-    -E "*.class" \
-    -E "*.exe" \
-    -E "*.bin" \
-    -E "*.lock" | 
-    fzf --preview 'bat --color=always --style=numbers --line-range=:50 {}')
-  [[ -n "$selected_file" ]] && nvim "$selected_file"
-}
-bindkey -s '^N' 'nvim_finder\n'
 
 # Directory navigation - with depth limit and cache
 dir_jumper() {
