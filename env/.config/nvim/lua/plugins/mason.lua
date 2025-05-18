@@ -35,6 +35,8 @@ return {
 					ensure_installed = {
 						"ts_ls",
 						"html",
+						"jsonls",
+						"yamlls",
 						"cssls",
 						"pbls",
 						"tailwindcss",

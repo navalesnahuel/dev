@@ -4,29 +4,24 @@ return {
 		lazy = true,
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			{
-				"folke/lazydev.nvim",
-				ft = "lua", -- only load on lua files
-				opts = {
-					library = {
-						{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-					},
-				},
-			},
+			"b0o/SchemaStore.nvim",
+			"folke/neodev.nvim",
 		},
 
 		config = function()
+			require("neodev").setup({})
+
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-			local function on_attach(client, bufnr)
-				-- Keybindings for LSP features
+			local lspconfig = require("lspconfig")
 
+			local function on_attach(_, bufnr)
 				vim.api.nvim_buf_set_keymap(
 					bufnr,
 					"n",
-					"gD", -- Change to gD for definition
-					"<Cmd>rightbelow vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>", -- Open definition in a vertical split to the right
+					"gD",
+					"<Cmd>rightbelow vsplit<CR><Cmd>lua vim.lsp.buf.definition()<CR>",
 					{ noremap = true, silent = true }
 				)
 
@@ -39,108 +34,89 @@ return {
 				)
 			end
 
-			-- Lua Server
-			require("lspconfig").lua_ls.setup({
-				on_attach = on_attach,
-				filetypes = { "lua" },
-			})
-
-			require("lspconfig").pbls.setup({
-				on_attach = on_attach,
-				filetypes = { "proto" },
-			})
-
-			-- Go Server
-
-			require("lspconfig").gopls.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-				settings = {
-					gopls = {
-						analyses = {
-							unusedparams = true,
-							nilness = true,
-							unusedwrite = true,
-							useany = true,
-						},
-						staticcheck = true,
-						gofumpt = true,
-					},
-				},
-			})
-
-			-- Python Server
-			require("lspconfig").pyright.setup({
-				on_attach = on_attach,
-				settings = {
-					python = {
-						analysis = {
-							typeCheckingMode = "basic",
-							useLibraryCodeForTypes = true,
+			local servers = {
+				gopls = {
+					settings = {
+						gopls = {
+							hints = {
+								assignVariableTypes = true,
+								compositeLiteralFields = true,
+								compositeLiteralTypes = true,
+								constantValues = true,
+								functionTypeParameters = true,
+								parameterNames = true,
+								rangeVariableTypes = true,
+							},
 						},
 					},
 				},
-			})
-
-			-- TypeScript Server
-			require("lspconfig").ts_ls.setup({
-				capabilities = capabilities,
-				filetypes = {
-					"typescript",
-					"typescriptreact",
-					"typescript.tsx",
-					"javascript",
-					"javascriptreact",
-					"javascript.jsx",
-					"html",
+				pyright = {
+					settings = {
+						python = {
+							analysis = {
+								typeCheckingMode = "basic",
+								useLibraryCodeForTypes = true,
+							},
+						},
+					},
 				},
-				on_attach = on_attach,
-			})
+				bashls = true,
+				pbls = true,
+				svelte = true,
+				cssls = true,
+				html = true,
+				tsserver = true,
+				emmet_language_server = true,
+				tailwindcss = true,
+				lua_ls = {
+					settings = {
+						Lua = {
+							runtime = {
+								version = "LuaJIT",
+							},
+							diagnostics = {
+								globals = { "vim" },
+							},
+							workspace = {
+								library = vim.api.nvim_get_runtime_file("", true),
+								checkThirdParty = false,
+							},
+							telemetry = { enable = false },
+						},
+					},
+				},
+				jsonls = {
+					settings = {
+						json = {
+							schemas = require("schemastore").json.schemas(),
+							validate = { enable = true },
+						},
+					},
+				},
+				yamlls = {
+					settings = {
+						yaml = {
+							schemaStore = {
+								enable = false,
+								url = "",
+							},
+							schemas = require("schemastore").yaml.schemas(),
+						},
+					},
+				},
+			}
 
-			-- HTML Server
-			require("lspconfig").html.setup({
-				capabilities = capabilities,
-				filetypes = { "html" },
-				on_attach = on_attach,
-			})
+			for name, config in pairs(servers) do
+				if config == true then
+					config = {}
+				end
+				config = vim.tbl_deep_extend("force", {
+					capabilities = capabilities,
+					on_attach = on_attach,
+				}, config)
 
-			-- CSS Server
-			require("lspconfig").cssls.setup({
-				capabilities = capabilities,
-				filetypes = { "css" },
-				on_attach = on_attach,
-			})
-
-			-- Svelte Server
-			require("lspconfig").svelte.setup({
-				capabilities = capabilities,
-				filetypes = { "svelte" },
-				on_attach = on_attach,
-			})
-
-			-- TailwindCSS Server
-			require("lspconfig").tailwindcss.setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
-
-			-- Bash Server
-			require("lspconfig").bashls.setup({ capabilities = capabilities, filetypes = { "bash", "sh" } })
-
-			-- Docker Server
-			require("lspconfig").dockerls.setup({
-				capabilities = capabilities,
-				filetypes = { "Dockerfile", "yml", "yaml" },
-			})
-			-- Yaml Server
-			require("lspconfig").yamlls.setup({ capabilities = capabilities, filetypes = { "yaml", "yml" } })
-
-			-- Emmet Server
-			require("lspconfig").emmet_language_server.setup({
-				capabilities = capabilities,
-				filetypes = { "html", "css", "javascriptreact", "typescriptreact", "vue", "jsx", "tsx" },
-				on_attach = on_attach,
-			})
+				lspconfig[name].setup(config)
+			end
 
 			vim.lsp.handlers["textDocument/semanticTokens/full"] = function() end
 			vim.diagnostic.config({

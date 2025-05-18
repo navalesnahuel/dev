@@ -1,23 +1,39 @@
-vim.opt.guicursor = ""
-vim.opt.nu = true
-vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.wrap = false
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
-vim.o.clipboard = "unnamedplus"
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-vim.opt.termguicolors = true
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = "no"
-vim.opt.isfname:append("@-@")
-vim.opt.updatetime = 50
-vim.o.inccommand = "nosplit"
-vim.g.python3_host_prog = "/usr/bin/python3.11"
+local opt = vim.opt
+
+-- You have to turn this one on :)
+opt.inccommand = "split"
+opt.incsearch = true
+
+-- Best search settings :)
+opt.smartcase = true
+opt.ignorecase = true
+opt.hlsearch = false
+
+opt.relativenumber = true
+opt.termguicolors = true
+opt.number = true
+opt.signcolumn = "yes"
+opt.splitbelow = true
+opt.splitright = true
+opt.cursorline = true
+
+opt.clipboard = "unnamedplus"
+
+-- Don't have `o` add a comment
+opt.formatoptions:remove("o")
+opt.guicursor = ""
+-- opt.wrap = false
+
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.smartindent = true
+opt.scrolloff = 8
+
+opt.swapfile = false
+opt.backup = false
+opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+opt.undofile = true
+opt.updatetime = 50
+opt.isfname:append("@-@")

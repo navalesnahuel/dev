@@ -1,8 +1,10 @@
 return {
 	"hrsh7th/nvim-cmp",
-	lazy = true,
+	lazy = false,
+	priority = 100,
 	event = "InsertEnter",
 	dependencies = {
+		"onsails/lspkind.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -13,19 +15,22 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
+		local lspkind = require("lspkind")
+		lspkind.init({})
 
 		-- Load snippets
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
-			snippet = {
-				expand = function(args)
-					luasnip.lsp_expand(args.body)
-				end,
-			},
+			sources = cmp.config.sources({
+				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
+				{ name = "path" },
+				{ name = "buffer" },
+			}),
+
 			mapping = cmp.mapping.preset.insert({
 				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-e>"] = cmp.mapping.abort(),
 				["<C-y>"] = cmp.mapping.confirm({
 					select = true,
 					behavior = cmp.ConfirmBehavior.Insert,
@@ -37,17 +42,24 @@ return {
 					behavior = cmp.ConfirmBehavior.Insert,
 				}),
 			}),
-			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
-				{ name = "buffer" },
-				{ name = "path" },
-			}),
+
+			snippet = {
+				expand = function(args)
+					luasnip.lsp_expand(args.body)
+				end,
+			},
 
 			-- window = {
 			-- 	completion = cmp.config.window.bordered(),
 			-- 	documentation = cmp.config.window.bordered(),
 			-- },
+		})
+
+		cmp.setup.filetype({ "sql" }, {
+			sources = {
+				{ name = "vim-dadbod-completion" },
+				{ name = "buffer" },
+			},
 		})
 	end,
 }

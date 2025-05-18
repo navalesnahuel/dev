@@ -11,6 +11,10 @@ return {
 		lazygit = { enabled = true },
 		picker = {
 			enabled = true,
+			sources = {
+				files = { hidden = true },
+			},
+			layout = { preset = "default" },
 		},
 		quickfile = { enabled = true },
 		scope = { enabled = true },
@@ -19,25 +23,7 @@ return {
 	},
 
 	keys = {
-		-- LSP
-		{
-			"gi",
-			function()
-				vim.cmd("vsplit")
-				vim.cmd("wincmd l") -- This moves the cursor to the right split
-				Snacks.picker.lsp_implementations()
-			end,
-			desc = "Goto Implementation",
-		},
-		{
-			"<leader>ss",
-			function()
-				Snacks.picker.lsp_symbols()
-			end,
-			desc = "LSP Symbols",
-		},
 
-		-- Git
 		{
 			"<leader>gB",
 			function()
@@ -86,17 +72,9 @@ return {
 			function()
 				Snacks.picker.git_diff()
 			end,
-			desc = "Git Diff (Hunks)",
+			desc = "Git Diff",
 		},
 
-		-- Find
-		{
-			"<leader><space>",
-			function()
-				Snacks.picker.smart()
-			end,
-			desc = "Smart Find Files",
-		},
 		{
 			"<leader>/",
 			function()
@@ -106,13 +84,6 @@ return {
 		},
 
 		{
-			"<leader>fw",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "Grep Files",
-		},
-		{
 			"<leader>ff",
 			function()
 				Snacks.picker.files()
@@ -120,7 +91,7 @@ return {
 			desc = "Find Files",
 		},
 		{
-			"<leader>fs",
+			"<leader>fw",
 			function()
 				Snacks.picker.grep_word()
 			end,
@@ -134,22 +105,14 @@ return {
 			end,
 			desc = "Find Git Files",
 		},
-
-		-- Grep/Search
 		{
-			"<leader>sb",
+			"<leader>fb",
 			function()
 				Snacks.picker.lines()
 			end,
 			desc = "Buffer Lines",
 		},
-		{
-			"<leader>hc",
-			function()
-				Snacks.picker.commands()
-			end,
-			desc = "Commands",
-		},
+
 		{
 			"<leader>xX",
 			function()
@@ -203,18 +166,25 @@ return {
 			desc = "Man Pages",
 		},
 		{
-			"<leader>su",
-			function()
-				Snacks.picker.undo()
-			end,
-			desc = "Undo History",
-		},
-		{
 			"<leader>hC",
 			function()
 				Snacks.picker.colorschemes()
 			end,
 			desc = "Colorschemes",
+		},
+		{
+			"<leader>hc",
+			function()
+				Snacks.picker.commands()
+			end,
+			desc = "Commands",
+		},
+		{
+			"<leader>hu",
+			function()
+				Snacks.picker.undo()
+			end,
+			desc = "Undo History",
 		},
 	},
 }

@@ -7,9 +7,6 @@ return {
 			default_file_explorer = true,
 			columns = {
 				"icon",
-				-- "permisions",
-				-- "size",
-				-- "mtime",
 			},
 			buf_options = {
 				buflisted = false,
@@ -152,11 +149,6 @@ return {
 			},
 		})
 
-		vim.api.nvim_set_keymap(
-			"n",
-			"<leader>e",
-			":Oil<CR>",
-			{ noremap = true, silent = true, desc = "Open Oil file explorer" }
-		)
+		vim.api.nvim_set_keymap("n", "<leader>e", ":Oil<CR>", { noremap = true, silent = true, desc = "Oil" })
 	end,
 }

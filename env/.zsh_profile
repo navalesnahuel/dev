@@ -21,6 +21,7 @@ addToPathFront() {
 }
 
 addToPathFront "$GOROOT/bin" 
+addToPathFront "$HOME/go/bin"
 addToPathFront $HOME/.local/.npm-global/bin
 addToPathFront $HOME/.local/apps
 addToPathFront $HOME/.local/scripts

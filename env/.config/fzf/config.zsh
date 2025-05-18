@@ -7,18 +7,16 @@ export FZF_DEFAULT_OPTS=" \
 --border=rounded \
 --prompt='▶ ' \
 --pointer='>' \
---separator="─" \
+--separator="━" \
 --no-mouse \
 --preview-window=hidden \
 --cycle \
 --layout=reverse"
 
-
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-" --color=bg+:#1f1d2e,bg:#191724,spinner:#9ccfd8,hl:#c4a7e7"\
-" --color=fg:#908caa,header:#c4a7e7,info:#ebbcba,pointer:#9ccfd8"\
-" --color=marker:#9ccfd8,fg+:#e0def4,prompt:#ebbcba,hl+:#c4a7e7,gutter:#191724"
-
+" --color=bg+:#3b3b3b,bg:-1,spinner:#00afaf,hl:#5fafff"\
+" --color=fg:#d0d0d0,header:#5fafff,info:#ffaf00,pointer:#00af00"\
+" --color=marker:#00af00,fg+:#ffffff,prompt:#00afaf,hl+:#d787d7,gutter:-1"
 
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'
@@ -27,7 +25,6 @@ export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden'
 export FZF_COMPLETION_DIR_OPTS='--walker dir,follow'
 export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 bindkey -r '^T'
-
 
 tt() {
     local session
@@ -41,15 +38,15 @@ bindkey '^T' tt
 
 # Directory navigation - with depth limit and cache
 fcd() {
-  local file 
-  dir=$(fdfind --type f --hidden --strip-cwd-prefix --follow \
+  local file
+  file=$(fdfind --type f --hidden --strip-cwd-prefix --follow \
     -E ".git" -E "node_modules" -E ".cache" -E ".venv" \
     -E ".vim" -E ".vscode" -E "go/pkg" -E ".npm" \
     -E "dist" -E "build" -E ".idea" -E "__pycache__" \
-    | command fzf --prompt="file > ") && nvim "$file"
+    | command fzf --prompt="file > ")
+  [[ -n $file ]] && nvim "$file"
   zle reset-prompt
 }
-
 zle -N fcd
 bindkey '^F' fcd
 

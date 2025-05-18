@@ -1,24 +1,22 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" }, -- Para íconos
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	event = "VeryLazy",
 	config = function()
 		require("mini.icons").setup()
 		MiniIcons.mock_nvim_web_devicons()
 
-		-- Define un tema personalizado basado en gruvbox-material pero con fondo transparente
 		local custom_theme = function()
 			local colors = {
-				bg = "NONE", -- Fondo transparente
-				fg = "#a0a0a0",
-				yellow = "#d8a657",
-				cyan = "#7daea3",
-				green = "#a9b665",
-				orange = "#e78a4e",
-				violet = "#d3869b",
-				magenta = "#c14a4a",
-				blue = "#7daea3",
-				red = "#ea6962",
+				fg = "#c0c0c0", -- más claro
+				yellow = "#f1c04a", -- más vibrante
+				cyan = "#8bd5e0", -- más claro y saturado
+				green = "#b6e07d", -- más brillante
+				orange = "#f78c4b", -- más contrastado
+				violet = "#df77c6", -- más saturado y brillante
+				magenta = "#e84a5f", -- rojo magenta más fuerte
+				blue = "#85d3f2", -- azul cielo más saturado
+				red = "#f85c50", -- rojo más llamativo
 			}
 
 			return {
@@ -58,7 +56,7 @@ return {
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = custom_theme(), -- Usa el tema personalizado con fondo transparente
+				theme = custom_theme(),
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 				globalstatus = true,
@@ -73,17 +71,17 @@ return {
 				},
 			},
 			sections = {
-				lualine_a = { { "mode", padding = 0 } },
+				lualine_a = { { "mode", padding = { left = 1, right = 0 } } },
 				lualine_b = {
 					{
 						"filename",
-						path = 0, -- Just the filename
-						shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+						path = 0,
+						shorting_target = 40,
 						symbols = {
-							modified = "[+]", -- Text to show when the file is modified.
-							readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
-							unnamed = "No Name", -- Text to show for unnamed buffers.
-							newfile = "New", -- Text to show for newly created file before first write
+							modified = "[+]",
+							readonly = "[-]",
+							unnamed = "No Name",
+							newfile = "New",
 							padding = { left = 1, right = 1 },
 						},
 					},
@@ -109,13 +107,11 @@ return {
 			extensions = { "lazy" },
 		})
 
-		-- Asegúrate de que la barra de estado no tenga fondos ni líneas adicionales
 		vim.cmd([[
 			hi StatusLine ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
 			hi StatusLineNC ctermbg=NONE guibg=NONE cterm=NONE gui=NONE
 		]])
 
-		-- Opcional: reducir espacio vertical
 		vim.opt.cmdheight = 0
 	end,
 }

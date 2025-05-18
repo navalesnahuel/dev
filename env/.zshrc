@@ -3,12 +3,11 @@ export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh_profile
 
-# theme
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%b '
+zstyle ':vcs_info:git:*' formats '%b'
 setopt PROMPT_SUBST
-PROMPT='%F{220}%n%f %F{254}%1~%f %F{168}${vcs_info_msg_0_}%f%F{15}→%f '
+PROMPT='%F{15}%n%f%F{250}@%f%F{244}%1~%f %F{240}(${vcs_info_msg_0_})%f %F{250}❯%f '
 
 # setup tools
 [ -f ~/.config/fzf/config.zsh ] && source ~/.config/fzf/config.zsh
