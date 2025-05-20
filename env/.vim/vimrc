@@ -1,0 +1,49 @@
+let mapleader = "\<Space>"
+nnoremap <leader>e :Explore<CR>
+
+" === Comportamiento de búsqueda ===
+set incsearch
+set ignorecase
+set smartcase
+set nohlsearch
+
+" === Líneas y numeración ===
+set number
+set relativenumber
+set cursorline
+
+" === Divisiones de ventanas ===
+set splitbelow
+set splitright
+
+" === Tabulación e indentado ===
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+
+" === Interfaz ===
+set termguicolors
+set signcolumn=yes
+set scrolloff=8
+
+" === Portapapeles del sistema ===
+set clipboard=unnamedplus
+
+" === Swap, backup y undo ===
+set noswapfile
+set nobackup
+set undofile
+
+" === Otros ===
+set isfname+=@-@
+set guicursor=
+set formatoptions-=o
+
+" === Tema básico ===
+syntax on
+set background=dark
+colorscheme gruvbox
+hi Normal guibg=#1f1f1f
+hi SignColumn guibg=#1f1f1f

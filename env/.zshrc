@@ -5,9 +5,9 @@ source ~/.zsh_profile
 
 autoload -Uz vcs_info
 precmd() { vcs_info }
-zstyle ':vcs_info:git:*' formats '%b'
+zstyle ':vcs_info:git:*' formats '(%b)'
 setopt PROMPT_SUBST
-PROMPT='%F{15}%n%f%F{250}@%f%F{244}%1~%f %F{240}(${vcs_info_msg_0_})%f %F{250}❯%f '
+PROMPT='%F{15}%n%f%F{250}@%f%F{244}%1~%f %F{240}${vcs_info_msg_0_}%f %F{250}❯%f '
 
 # setup tools
 [ -f ~/.config/fzf/config.zsh ] && source ~/.config/fzf/config.zsh
