@@ -47,6 +47,7 @@ return {
 								parameterNames = true,
 								rangeVariableTypes = true,
 							},
+							templateExtensions = { "gohtml", "gotmpl", "tmpl" },
 						},
 					},
 				},
@@ -64,10 +65,74 @@ return {
 				pbls = true,
 				svelte = true,
 				cssls = true,
-				html = true,
-				tsserver = true,
-				emmet_language_server = true,
-				tailwindcss = true,
+				html = {
+					filetypes = { "html", "templ", "gohtml", "gotmpl" },
+					settings = {
+						html = {
+							format = {
+								templating = true,
+								wrapLineLength = 120,
+								unformatted = "wbr",
+								contentUnformatted = "pre,code,textarea",
+								indentInnerHtml = false,
+								preserveNewLines = true,
+								indentHandlebars = false,
+								endWithNewline = false,
+								extraLiners = "head,body,/html",
+								wrapAttributes = "auto",
+							},
+							hover = {
+								documentation = true,
+								references = true,
+							},
+						},
+					},
+				},
+				tsserver = {
+					settings = {
+						typescript = { suggest = { enabled = false } },
+						javascript = { suggest = { enabled = false } },
+						init_options = {
+							preferences = {
+								disableSuggestions = true,
+							},
+							maxTsServerMemory = 4096,
+							tsserver = {
+								watchOptions = {
+									watchFile = "off",
+								},
+							},
+						},
+					},
+				},
+				templ = {
+					filetypes = { "templ", "gohtml", "gotmpl" },
+				},
+
+				tailwindcss = {
+					filetypes = { "html", "templ", "gohtml", "gotmpl", "css", "scss", "javascript", "typescript" },
+					settings = {
+						tailwindcss = {
+							experimental = {
+								classregex = {
+									"class[:]?\\s*[\"']([^\"']*)[\"']",
+									"hx-[\\w-]*\\s*[\"']([^\"']*)[\"']",
+									"{{.*?class.*?[\"']([^\"']*)[\"'].*?}}",
+								},
+							},
+							includelanguages = {
+								templ = "html",
+								gohtml = "html",
+								gotmpl = "html",
+							},
+						},
+					},
+				},
+
+				htmx = {
+					filetypes = { "html", "templ", "gohtml", "gotmpl" },
+				},
+				-- emmet_language_server = true,
 				lua_ls = {
 					settings = {
 						Lua = {

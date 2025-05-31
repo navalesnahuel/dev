@@ -1,13 +1,12 @@
 return {
 	"mfussenegger/nvim-lint",
 	opts = {
-		events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+		events = { "BufWritePost", "InsertLeave" },
 		linters_by_ft = {
 			fish = { "fish" },
 			python = { "ruff" },
 			["*"] = { "global_linter" },
 			javascript = { "eslint" },
-			html = { "tidy" },
 			go = { "golangci-lint" },
 			svelte = { "eslint" },
 		},

@@ -8,43 +8,58 @@ return {
 	-- Vim be good
 	{ "ThePrimeagen/vim-be-good" },
 
-	-- LuaSnip + Friendly Snippets
 	{
 		"L3MON4D3/LuaSnip",
 		lazy = true,
 		event = "InsertEnter",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
-			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip.loaders.from_vscode").lazy_load({
+				include = {
+					-- Frontend
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+					"html",
+					"css",
+
+					-- Backend / CLI
+					"python",
+					"go",
+
+					-- Config
+					"lua",
+				},
+			})
 		end,
 	},
 
 	-- Which Key
 	{
 		"folke/which-key.nvim",
-		event = "VeryLazy",
+		cmd = "WhichKey",
 		opts = {
 			win = {
-				border = "none", -- Sin bordes
-				padding = { 1, 1 }, -- Padding mínimo (Vertical, Horizontal)
+				border = "none",
+				padding = { 1, 1 },
 			},
 			layout = {
-				height = { min = 1 }, -- Permitir altura mínima de 1 línea
-				width = { min = 10 }, -- Ancho mínimo pequeño
-				spacing = 1, -- Espacio mínimo entre columnas
-				align = "left", -- Alineación del texto
+				height = { min = 1 },
+				width = { min = 10 },
+				spacing = 1,
+				align = "left",
 			},
 			icons = {
-				breadcrumb = "»", -- Icono separador de niveles
-				separator = "➜", -- Icono separador entre tecla y descripción
-				group = "", -- Sin icono para grupos (más minimalista)
+				breadcrumb = "»",
+				separator = "➜",
+				group = "",
 			},
 			plugins = {
-				marks = false, -- No mostrar marcadores automáticamente
-				registers = false, -- No mostrar registros automáticamente
-				spelling = { enabled = false }, -- Desactiva sugerencias de spelling si aparecen
+				marks = false,
+				registers = false,
+				spelling = { enabled = false },
 			},
-			-- No establecemos 'preset', usamos defaults + nuestros ajustes.
 		},
 	},
 

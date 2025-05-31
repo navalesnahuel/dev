@@ -57,12 +57,15 @@ return {
 					mason_tool_installer.setup({
 						ensure_installed = {
 							"prettier",
+							"prettierd",
 							"stylua",
+							"goimports",
 							"isort",
 							"black",
 							"shfmt",
 							"pylint",
 							"eslint_d",
+							"htmx-lsp",
 							"eslint",
 							"ruff",
 							"golangci-lint",

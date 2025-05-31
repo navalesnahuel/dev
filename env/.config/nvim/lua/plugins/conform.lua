@@ -1,42 +1,34 @@
 return {
 	"stevearc/conform.nvim",
 	dependencies = { "mason.nvim" },
-	init = function()
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			pattern = "*",
-			callback = function()
-				local bufnr = vim.fn.bufnr()
-				require("conform").format({ bufnr = bufnr })
-			end,
-		})
-	end,
-
 	config = function()
 		require("conform").setup({
-			default_format_opts = {
-				timeout_ms = 3000,
-				async = false,
-				quiet = false,
-				lsp_format = "fallback",
+			-- Usar format_on_save en lugar de autocmd manual
+			format_on_save = {
+				lsp_format = false,
+				async = true,
+				timeout_ms = 300,
 			},
 			formatters_by_ft = {
 				-- python = { "isort", "black" },
 				lua = { "stylua" },
 				sh = { "shfmt" },
-				javascript = { "prettier" },
-				go = { "gofumpt" },
-				svelte = { "prettier" },
-				json = { "prettier" },
-				yaml = { "prettier" },
-				html = { "prettier" },
-				css = { "prettier" },
+				javascript = { "prettierd" },
+				typescript = { "prettierd" }, -- Agregado TypeScript
+				javascriptreact = { "prettierd" }, -- Agregado JSX
+				typescriptreact = { "prettierd" }, -- Agregado TSX
+				go = { "goimports", "gofmt" },
+				svelte = { "prettierd" },
+				json = { "prettierd" },
+				yaml = { "prettierd" },
+				html = { "prettierd" },
+				css = { "prettierd" },
 			},
 			formatters = {
-				injected = { options = { ignore_errors = true } },
-				prettier = {
+				prettierd = {
 					prepend_args = {
-						"--tab-width",
-						"4",
+						"--tab-width=4",
+						"--use-tabs=false",
 					},
 				},
 			},
