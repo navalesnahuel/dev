@@ -6,7 +6,7 @@ return {
 			-- Usar format_on_save en lugar de autocmd manual
 			format_on_save = {
 				lsp_format = false,
-				async = true,
+				async = false,
 				timeout_ms = 300,
 			},
 			formatters_by_ft = {

@@ -9,5 +9,3 @@ GO_DIR="$INSTALL_DIR/go"
 wget -q "https://golang.org/dl/go${GO_VERSION}.${OS}-${ARCH}.tar.gz" -O /tmp/go.tar.gz
 rm -rf "$GO_DIR"
 tar -C "$INSTALL_DIR" -xzf /tmp/go.tar.gz
-
-go install github.com/jorgerojas26/lazysql@latest
