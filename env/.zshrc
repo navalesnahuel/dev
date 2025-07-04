@@ -4,10 +4,11 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh_profile
 
 autoload -Uz vcs_info
+autoload -U colors && colors
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '(%b)'
 setopt PROMPT_SUBST
-PROMPT='%F{15}%n%f%F{250}@%f%F{244}%1~%f %F{240}${vcs_info_msg_0_}%f %F{250}❯%f '
+PROMPT='%{%F{#e0def4}%B%}%n%{%b%f%}%{%F{#6e6a86}%}@%{%f%}%{%F{#9ccfd8}%B%}%1~%{%b%f%} %{%F{#6e6a86}%}${vcs_info_msg_0_}%{%f%} %{%F{#6e6a86}%B%}❯%{%b%f%} '
 
 # setup tools
 [ -f ~/.config/fzf/config.zsh ] && source ~/.config/fzf/config.zsh

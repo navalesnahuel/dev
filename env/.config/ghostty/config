@@ -1,18 +1,14 @@
 # Run `ghostty +show-config --default --docs` to view a list of
 # all available config options and their default values.
-#
+
 # Additionally, each config option is also explained in detail
 # on Ghostty's website, at https://ghostty.org/docs/config.
-
-# Config syntax crash course
-# ==========================
 
 window-padding-x = 6   
 window-padding-y = 4,0
 window-padding-balance = false
 window-decoration = false
 
-# theme = gruvbox-material.conf
 theme = rose-pine.conf
 cursor-style = block
 cursor-style-blink = false

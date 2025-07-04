@@ -5,7 +5,7 @@
 
 // Define our custom palette as variables for clarity
 * {
-  custom-bg:              #1e1e1e; // Base Background
+  custom-bg:              #181818; // Base Background
   custom-fg:              #a0a0a0; // Default Foreground
   custom-bg-alt:          #303030; // Darker Gray (Selected BG, Alternate BG)
   custom-fg-alt:          #e0e0e0; // Bright Gray (Selected FG, Prompt, Pointer)

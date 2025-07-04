@@ -51,6 +51,7 @@ return {
 						},
 					},
 				},
+				sqls = true,
 				pyright = {
 					settings = {
 						python = {

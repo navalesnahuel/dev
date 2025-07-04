@@ -43,6 +43,7 @@ return {
 						"gopls",
 						"svelte",
 						"bashls",
+						"sqls",
 						"lua_ls",
 						"graphql",
 						"prismals",
