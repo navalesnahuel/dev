@@ -21,6 +21,16 @@ font-feature = calt, liga, ss04, ss05, ss06, ss07, ss08, ss09
 cursor-style = block
 cursor-style-blink = false
 
+keybind=alt+one=unbind
+keybind=alt+two=unbind
+keybind=alt+three=unbind
+keybind=alt+four=unbind
+keybind=alt+five=unbind
+keybind=alt+six=unbind
+keybind=alt+seven=unbind
+keybind=alt+eight=unbind
+keybind=alt+nine=unbind
+
 keybind = ctrl+v=paste_from_clipboard
 keybind = ctrl+up=increase_font_size:1
 keybind = ctrl+down=decrease_font_size:1

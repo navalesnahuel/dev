@@ -11,14 +11,16 @@ exec_always --no-startup-id picom
 exec_always --no-startup-id nm-applet
 exec_always feh --bg-fill $HOME/Pictures/Wallpapers/cool.jpg
 exec_always --no-startup-id nvidia-settings --assign DigitalVibrance=1023 
-exec --no-startup-id xset s off         
-exec --no-startup-id xset -dpms          
-exec --no-startup-id xset s noblank     
 exec --no-startup-id xinput --set-prop 9 "libinput Accel Profile Enabled" 0, 1
-exec --no-startup-id xset m 0 0
 exec --no-startup-id ghostty 
 exec --no-startup-id obsidian
 exec --no-startup-id zen
+
+exec_always --no-startup-id xset s off
+exec_always --no-startup-id xset s noblank
+exec_always --no-startup-id xset s 0 0
+exec_always --no-startup-id xset dpms 0 0 0
+exec_always --no-startup-id xset -dpms
 
 # Volume and media controls
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -106,9 +108,8 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -location 0 -width 30 -lines 8
 bindsym $mod+g exec --no-startup-id rofi -show run -location 0 -width 30 -lines 5
 bindsym $mod+Print exec --no-startup-id flameshot gui -c
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec --no-startup-id i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'
+bindsym $mod+Shift+r exec --no-startup-id reload-apps
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
