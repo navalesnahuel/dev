@@ -7,6 +7,7 @@ export DENO_INSTALL="$HOME/.deno"
 export N_PREFIX="$HOME/.local/n"
 export DEV_ENV_HOME="$HOME/personal/dev"
 export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 addToPath() {
     if [[ "$PATH" != *"$1"* ]]; then

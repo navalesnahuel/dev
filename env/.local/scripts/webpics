@@ -1,0 +1,19 @@
+mkdir -p webp_output
+
+shopt -s nullglob  # hace que los globs vacíos se ignoren
+
+for img in *.jpg *.jpeg *.png *.webp; do
+    [ -e "$img" ] || continue
+    mogrify \
+        -monitor \
+        -path webp_output \
+        -format webp \
+        -auto-orient \
+        -filter Lanczos \
+        -resize 1032x1510\! \
+        -unsharp 0x0.75+0.75+0.008 \
+        -quality 85 \
+        -define webp:method=6 \
+        -strip \
+        "$img"
+done

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sh -c "$(curl -sS https://starship.rs/install.sh)" -- --yes
 sudo apt install -y zsh
 hash -r
 sudo chsh -s $(which zsh)

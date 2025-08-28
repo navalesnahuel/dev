@@ -5,5 +5,5 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y \
     git ripgrep pavucontrol xclip jq tldr \
     shutter python3-pip rofi gimp \
-    htop curl wget unzip fzf \
+    htop curl wget unzip fzf flameshot \
     bat eza picom zoxide

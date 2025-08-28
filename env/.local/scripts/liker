@@ -1,0 +1,41 @@
+#!/bin/bash
+# Uso: ./start-liker <tweet-id>
+
+COMPOSE_DIR="/home/nahuel/personal/hub/mini/tw-like-bot"
+LOG_FILE="$COMPOSE_DIR/bots.log"
+
+# Cambiar al directorio del proyecto
+cd "$COMPOSE_DIR" || {
+    echo "No se puede cambiar a $COMPOSE_DIR"
+    exit 1
+}
+
+# Tweet-id obligatorio
+if [ -z "$1" ]; then
+    echo "Tenés que pasarle un tweet-id, ej: start-liker asdad"
+    exit 1
+fi
+TWEET_ID="$1"
+
+# Relanzar en background si no se está ejecutando ya así
+if [ -z "$START_LIKER_BG" ]; then
+    export START_LIKER_BG=1
+    nohup "$0" "$@" >>"$LOG_FILE" 2>&1 &
+    echo "start-liker lanzado en segundo plano, logs en $LOG_FILE"
+    exit 0
+fi
+
+# Lista de bots
+services=("bot-1" "bot-2" "bot-3" "bot-4" "bot-5")
+
+for srv in "${services[@]}"; do
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Iniciando $srv con tweet-id: $TWEET_ID..." >>"$LOG_FILE"
+
+    # Ejecuta el contenedor y redirige toda la salida al log
+    docker compose run --rm "$srv" --tweet-id "$TWEET_ID" >>"$LOG_FILE" 2>&1
+
+    # Espera de 3 a 4 minutos entre bots
+    sleep $((120 + RANDOM % 60))
+done
+
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Todos los bots terminaron" >>"$LOG_FILE"

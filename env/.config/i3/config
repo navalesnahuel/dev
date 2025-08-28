@@ -13,7 +13,6 @@ exec_always feh --bg-fill $HOME/Pictures/Wallpapers/cool.jpg
 exec_always --no-startup-id nvidia-settings --assign DigitalVibrance=1023 
 exec --no-startup-id xinput --set-prop 9 "libinput Accel Profile Enabled" 0, 1
 exec --no-startup-id ghostty 
-exec --no-startup-id obsidian
 exec --no-startup-id zen
 
 exec_always --no-startup-id xset s off
@@ -71,7 +70,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # Window assignments
 assign [class="ghostty"] $ws1
 assign [class="zen"] $ws2
-assign [class="obsidian"] $ws3
 
 # Bar configuration
 bar {
@@ -80,26 +78,26 @@ bar {
     mode hide
     hidden_state hide
     modifier $mod
-    position top
+    position bottom
     tray_output primary
     separator_symbol " | "
     colors {
-        background #181818
-        statusline #cdd6f4
-        separator #585b70
-        focused_workspace #89b4fa #1e1e2e #cdd6f4
-        active_workspace #585b70 #1e1e2e #cdd6f4
-        inactive_workspace #45475a #1e1e2e #9399b2
-        urgent_workspace #f38ba8 #1e1e2e #cdd6f4
+        background #161616
+        statusline #e6e6e6
+        separator #666666
+        focused_workspace #cccccc #333333 #ffffff
+        active_workspace #999999 #222222 #e6e6e6
+        inactive_workspace #666666 #161616 #999999
+        urgent_workspace #b3b3b3 #444444 #ffffff
     }
 }
 
 # Window colors
-client.focused          #888888 #222222 #c0c0c0 #222222
-client.unfocused        #181818 #222222 #888888 #222222
-client.urgent #f38ba8 #1e1e2e #cdd6f4 #f38ba8 #f38ba8
-client.placeholder #45475a #1e1e2e #9399b2 #45475a #45475a
-client.background #181818
+client.focused          #999999 #333333 #ffffff #666666
+client.unfocused        #444444 #161616 #999999 #333333
+client.urgent           #b3b3b3 #444444 #ffffff #b3b3b3
+client.placeholder      #666666 #161616 #999999 #666666
+client.background       #161616
 
 
 # Core keybindings

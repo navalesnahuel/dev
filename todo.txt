@@ -1,2 +1,5 @@
 zen
 obsidian
+calibre
+cursor
+lazygit

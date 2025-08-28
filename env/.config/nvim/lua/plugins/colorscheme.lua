@@ -28,6 +28,66 @@ return {
 	},
 
 	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+		priority = 1000,
+		name = "kanagawa",
+		config = function()
+			require("kanagawa").setup({
+				compile = false, -- enable compiling the colorscheme
+				undercurl = true, -- enable undercurls
+				commentStyle = { italic = false },
+				functionStyle = {},
+				keywordStyle = { italic = false },
+				statementStyle = { bold = true },
+				typeStyle = {},
+				transparent = true,
+				dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+				terminalColors = true,
+				colors = {
+					palette = {},
+					theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+				},
+				overrides = function(colors)
+					return {}
+				end,
+				theme = "dragon",
+				background = { -- map the value of 'background' option to a theme
+					dark = "dragon", -- try "dragon" !
+					light = "lotus",
+				},
+			})
+		end,
+	},
+
+	{
+		"sainnhe/sonokai",
+		priority = 1000,
+		config = function()
+			vim.g.sonokai_isable_italic_comment = 0
+			vim.g.sonokai_enable_italic = 0
+			vim.g.sonokai_enable_bold = 0
+
+			vim.g.sonokai_better_performance = 1
+
+			vim.g.sonokai_diagnostic_virtual_text = "colored"
+			vim.g.sonokai_diagnostic_text_highlight = 1
+			vim.g.sonokai_diagnostic_line_highlight = 1
+
+			vim.g.sonokai_background = "hard"
+			vim.g.sonokai_foreground = "mix"
+
+			vim.g.sonokai_menu_selection_background = "blue"
+			vim.g.sonokai_visual = "blue background"
+			vim.g.sonokai_ui_contrast = "high"
+
+			vim.g.sonokai_floating_window_style = "bright"
+			vim.g.sonokai_transparent_background = 1
+			vim.g.sonokai_style = "shusia"
+		end,
+	},
+
+	{
 		"rose-pine/neovim",
 		lazy = false,
 		priority = 1000,
