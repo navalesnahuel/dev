@@ -2,6 +2,11 @@ export XDG_CONFIG_HOME=$HOME/.config
 export DEV_ENV=$HOME/personal/dev
 
 export GIT_EDITOR=nvim
+export EDITOR=nvim
+export VISUAL=nvim
+export SUDO_EDITOR=nvim
+export SELECTED_EDITOR=nvim
+
 export GOROOT="$HOME/.local/go"
 export DENO_INSTALL="$HOME/.deno"
 export N_PREFIX="$HOME/.local/n"

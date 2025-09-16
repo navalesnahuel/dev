@@ -17,16 +17,17 @@ export EZA_COLORS="..."
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
 unalias ls 2>/dev/null
+alias vim=nvim
 alias ls='eza'
 alias l='eza -l'
 alias la='eza -la'
 alias lt='eza --tree'
-alias fd="fdfind --hidden --follow --exclude .git"
+alias fd="fdfind"
 alias bat="batcat"
 alias cat="bat --paging=never"
 alias rg='rg --no-ignore'
+alias okular="flatpak run org.kde.okular"
 alias cd="z"
 alias kubectl="minikube kubectl --"
 setopt IGNORE_EOF
-
 bindkey '^[w' forward-word     

@@ -2,47 +2,33 @@
 
 # FZF appearance
 export FZF_DEFAULT_OPTS=" \
---tmux 77% \
+--tmux=82% \
 --ansi \
---border=rounded \
---prompt='▶ ' \
---pointer='>' \
---separator="━" \
---no-mouse \
---preview-window=hidden \
 --cycle \
---layout=reverse"
-
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS"\
-" --color=bg+:#3b3b3b,bg:-1,spinner:#00afaf,hl:#5fafff"\
-" --color=fg:#d0d0d0,header:#5fafff,info:#ffaf00,pointer:#00af00"\
-" --color=marker:#00af00,fg+:#ffffff,prompt:#00afaf,hl+:#d787d7,gutter:-1"
+--no-mouse \
+--layout=reverse \
+--border=rounded \
+--info=inline \
+--prompt='▶ ' \
+--pointer='◆' \
+--marker='*' \
+--separator='━' \
+--color=fg:#d8dee9,bg:#161616,hl:#81a1c1 \
+--color=fg+:#e5e9f0,bg+:#2e3440,hl+:#88c0d0 \
+--color=info:#ebcb8b,prompt:#81a1c1,pointer:#ebcb8b \
+--color=marker:#ebcb8b,spinner:#81a1c1,header:#81a1c1,border:#4c566a"
 
 # Use ~~ as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER='~~'
 export FZF_COMPLETION_OPTS='--border --info=inline'
-export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow,hidden'
+export FZF_COMPLETION_PATH_OPTS='--walker file,dir,follow'
 export FZF_COMPLETION_DIR_OPTS='--walker dir,follow'
-export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix --hidden --follow --exclude .git'
-bindkey -r '^T'
-
-tt() {
-    local session
-    session=$(tmux list-sessions -F '#S' | fzf --prompt="tmux > ")
-    if [[ -n $session ]]; then
-        tmux switch-client -t "$session"
-    fi
-}
-zle -N tt
-bindkey '^T' tt
+export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix --follow'
 
 # Directory navigation - with depth limit and cache
 fcd() {
   local file
-  file=$(fdfind --type f --hidden --strip-cwd-prefix --follow \
-    -E ".git" -E "node_modules" -E ".cache" -E ".venv" \
-    -E ".vim" -E ".vscode" -E "go/pkg" -E ".npm" \
-    -E "dist" -E "build" -E ".idea" -E "__pycache__" \
+  file=$(fdfind --type f --strip-cwd-prefix --follow \
     | command fzf --prompt="file > ")
   [[ -n $file ]] && nvim "$file"
   zle reset-prompt
@@ -53,10 +39,7 @@ bindkey '^F' fcd
 # Directory navigation - with depth limit and cache
 dcd() {
   local dir
-  dir=$(fdfind --type d --hidden --strip-cwd-prefix --follow \
-    -E ".git" -E "node_modules" -E ".cache" -E ".venv" \
-    -E ".vim" -E ".vscode" -E "go/pkg" -E ".npm" \
-    -E "dist" -E "build" -E ".idea" -E "__pycache__" \
+  dir=$(fdfind --type d  --strip-cwd-prefix --follow \
     | command fzf --prompt="dir > ") && cd "$dir"
   zle reset-prompt
 }
@@ -66,8 +49,7 @@ bindkey '^D' dcd
 
 cpf() {
   local files
-  files=$(fd . --type f --hidden ~ | fzf --multi --prompt="files to copy > ")
-
+  files=$(fd . --type f --hidden ~ | fzf --multi --prompt="files to copy (tab to select) > ")
   if [[ -n "$files" ]]; then
     echo "$files" | while IFS= read -r file; do
       cp -v "$file" "./$(basename "$file")"
@@ -79,7 +61,7 @@ cpf() {
 
 cpd() {
   local dirs
-  dirs=$(fd . --type d --hidden ~ | fzf --multi --prompt="folders to copy > ")
+  dirs=$(fd . --type d --hidden ~ | fzf --multi --prompt="folders to copy (tab to select) > ")
 
   if [[ -n "$dirs" ]]; then
     echo "$dirs" | while IFS= read -r dir; do
@@ -110,29 +92,37 @@ fkill() {
 zle -N fkill
 bindkey '^K' fkill
 
-# Enhanced with container info and faster listings
-fdocker() {
-  local action
-  action=$(echo -e "ps\nlogs\nexec\nstop\nstart\nrestart\nrm\nstats" | 
-           fzf --prompt="Docker action: " --height=10%)
-  
-  case "$action" in
-    ps)
-      docker ps ;;
-    logs)
-      local container
-      container=$(docker ps --format "{{.Names}} ({{.Image}})" | 
-                 fzf --prompt="Select container: " --height=40%)
-      [[ -n "$container" ]] && docker logs -f "${container%% *}" ;;
-    exec)
-      local container
-      container=$(docker ps --format "{{.Names}} ({{.Image}})" | 
-                 fzf --prompt="Select container: " --height=40%)
-      [[ -n "$container" ]] && docker exec -it "${container%% *}" /bin/bash ;;
-    stop|start|restart|rm|stats)
-      local container
-      container=$(docker ps -a --format "{{.Names}} ({{.Status}})" | 
-                 fzf --prompt="Select container: " --height=40%)
-      [[ -n "$container" ]] && docker "$action" "${container%% *}" ;;
-  esac
+fpath_any() {
+  local last_arg=${LBUFFER##* }
+  local dir
+  dir=$(eval echo "$last_arg")
+  [[ ! -d "$dir" ]] && dir="$PWD"
+
+  local file
+  file=$(fd --absolute-path . "$dir" --type f \
+    | fzf --prompt="file > " \
+          --preview '[[ $(file --mime-type -b {}) == text/* ]] && batcat --color=always {} || ([[ $(file --mime-type -b {}) =~ ^image/ ]] && chafa {} || file --brief {})' \
+          --preview-window=right:50%)
+
+  if [[ -n "$file" ]]; then
+    LBUFFER="${LBUFFER%$last_arg*}$file "
+  fi
+
+  zle reset-prompt
+}
+
+zle -N fpath_any
+bindkey '^P' fpath_any
+
+
+bookie() {
+    local file
+    file=$(fd . /home/nahuel/Dropbox/Apps/Books --type f --hidden --max-depth 1 | fzf --multi --prompt="Select book > ")
+    if [[ -n "$file" ]]; then
+        echo "$file" | while IFS= read -r f; do
+            flatpak run org.kde.okular "$f" & 
+        done
+    else
+        echo "No book selected."
+    fi
 }
