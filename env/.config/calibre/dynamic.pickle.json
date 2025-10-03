@@ -1,0 +1,30 @@
+{
+  "add books dialog dir": "/home/nahuel/Dropbox/Apps/Books",
+  "add books dialog dir-last-used-filter-spec-all-files": false,
+  "database location dialog": "/home/nahuel/personal/hub/books",
+  "library_delete_books_again": true,
+  "notified-version-updates": {
+    "__class__": "set",
+    "__value__": [
+      "8.10",
+      "8.7",
+      "8.9",
+      "8.8"
+    ]
+  },
+  "recursive book import root dir dialog": "/home/nahuel/Dropbox/Apps/Books",
+  "s_r_search_mode": 0,
+  "save to disk dialog": "/home/nahuel/Dropbox/eBooks",
+  "sort_history": [
+    [
+      "timestamp",
+      false
+    ],
+    [
+      "timestamp",
+      false
+    ]
+  ],
+  "welcome_wizard_device": "default",
+  "welcome_wizard_was_run": true
+}

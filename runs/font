@@ -1,7 +1,20 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-git clone https://github.com/githubnext/monaspace.git $HOME/personal/monaspace
+FONT_DIR="$HOME/.local/share/fonts"
+mkdir -p "$FONT_DIR"
+
+if [ ! -d "$HOME/personal/monaspace" ]; then
+    git clone https://github.com/githubnext/monaspace.git "$HOME/personal/monaspace"
+fi
 (
-    cd $HOME/personal/monaspace
-    bash util/install_linux.sh
+    cd "$HOME/personal/monaspace"
+    bash util/install_linux.sh --user
 )
+
+cd /tmp
+wget -q https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CaskaydiaMono.zip -O CaskaydiaMono.zip
+unzip -o CaskaydiaMono.zip -d "$FONT_DIR"
+rm CaskaydiaMono.zip
+
+fc-cache -fv "$FONT_DIR"

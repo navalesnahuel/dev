@@ -1,0 +1,295 @@
+{
+  "geometry-of-main_window_geometry": {
+    "frame_geometry": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "maximized": false,
+    "normal_geometry": {
+      "height": 1080,
+      "width": 1920,
+      "x": 0,
+      "y": 0
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAAAAAAAAAAAB38AAAQ3AAAAAAAAAAAAAAd/AAAENwAAAAAAAAAAB4AAAAAAAAAAAAAAB38AAAQ3"
+    },
+    "screen": {
+      "depth": 24,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1080,
+        "width": 1920,
+        "x": 0,
+        "y": 0
+      },
+      "index_in_screens_list": 0,
+      "manufacturer": "Samsung Electric Company",
+      "model": "S23B350",
+      "name": "HDMI-1",
+      "serial": "",
+      "size_in_logical_pixels": {
+        "height": 1080,
+        "width": 1920
+      },
+      "virtual_geometry": {
+        "height": 1080,
+        "width": 1920,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  "local_storage": {
+    "search-bar-history-search-for-sc": [
+      "high",
+      "color",
+      "light",
+      "theme",
+      "page"
+    ],
+    "simple_input_history_net_search_url": [
+      "https://google.com/search?q={q}"
+    ]
+  },
+  "main_window_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAEAAAAEOPwCAAAAAfsAAAAWAHMAZQBhAHIAYwBoAC0AZABvAGMAawAAAAAA/////wAAAJQA////AAAAAQAAAQ4AAAQ4/AIAAAAF+wAAABAAdABvAGMALQBkAG8AYwBrAQAAAAAAAAQ4AAAAhgD////7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAAB7AP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAAAAAEOAAAAOYA////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAEgD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAAAAAEOAAAAM8A////AAAGbAAABDgAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
+  },
+  "old_prefs_migrated": true,
+  "session_data": {
+    "base_font_size": 19,
+    "book_scrollbar": false,
+    "columns_per_screen": {
+      "landscape": 1,
+      "portrait": 1
+    },
+    "controls_footer": {
+      "left": "empty",
+      "middle": "pos-book",
+      "right": "progress"
+    },
+    "controls_help_shown_count": 2,
+    "cover_preserve_aspect_ratio": false,
+    "current_color_scheme": "white",
+    "footer": {
+      "left": "pos-book",
+      "middle": "pos-book",
+      "right": "progress"
+    },
+    "gesture_overrides": {
+      "common": {
+        "control_zone_tap": "none"
+      }
+    },
+    "header": {
+      "left": "empty",
+      "middle": "empty",
+      "right": "menu-icon-on-hover"
+    },
+    "highlight_style": {
+      "kind": "color",
+      "type": "builtin",
+      "which": "blue"
+    },
+    "keyboard_shortcuts": {},
+    "left-margin": {
+      "left": "empty",
+      "middle": "empty",
+      "right": "empty"
+    },
+    "margin_bottom": 20,
+    "margin_left": 20,
+    "margin_right": 20,
+    "margin_top": 20,
+    "max_text_width": 1280,
+    "override_book_colors": "never",
+    "paged_margin_clicks_scroll_by_screen": true,
+    "paged_pixel_scroll_threshold": 60,
+    "paged_wheel_scrolls_by_screen": false,
+    "paged_wheel_section_jumps": true,
+    "read_mode": "flow",
+    "right-margin": {
+      "left": "empty",
+      "middle": "empty",
+      "right": "empty"
+    },
+    "selection_bar_actions": [
+      "quick_highlight",
+      "copy"
+    ],
+    "selection_bar_quick_highlights": [
+      "type:builtin;kind:color;which:blue;light:undefined;dark:undefined;background-color:undefined;text-decoration-line:undefined;text-decoration-color:undefined;text-decoration-style:undefined"
+    ],
+    "show_selection_bar": false,
+    "skipped_dialogs": {},
+    "standalone_font_settings": {},
+    "standalone_misc_settings": {
+      "remember_window_geometry": true
+    },
+    "standalone_recently_opened": [
+      {
+        "authors": [
+          "Regina O. Obe"
+        ],
+        "key": "/home/nahuel/personal/hub/books/Regina O. Obe/PostgreSQL (39)/PostgreSQL - Regina O. Obe.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Regina O. Obe/PostgreSQL (39)/PostgreSQL - Regina O. Obe.epub",
+        "timestamp": "2025-09-25T21:58:02.766Z",
+        "title": "PostgreSQL"
+      },
+      {
+        "authors": [
+          "David Gourley",
+          "Brian Totty",
+          "Marjorie Sayer",
+          "Anshu Aggarwal",
+          "Sailu Reddy"
+        ],
+        "key": "/home/nahuel/personal/hub/books/David Gourley/HTTP_ The Definitive Guide (40)/HTTP_ The Definitive Guide - David Gourley.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/David Gourley/HTTP_ The Definitive Guide (40)/HTTP_ The Definitive Guide - David Gourley.epub",
+        "timestamp": "2025-09-17T19:52:28.626Z",
+        "title": "HTTP: The Definitive Guide"
+      },
+      {
+        "authors": [
+          "Neil Madden"
+        ],
+        "key": "/home/nahuel/Dropbox/Apps/Books/API Security in Action.epub",
+        "pathtoebook": "/home/nahuel/Dropbox/Apps/Books/API Security in Action.epub",
+        "timestamp": "2025-08-31T16:56:49.542Z",
+        "title": "API Security in Action epub"
+      },
+      {
+        "authors": [
+          "Neil Madden"
+        ],
+        "key": "/home/nahuel/personal/hub/books/Neil Madden/API Security in Action epub (1)/API Security in Action epub - Neil Madden.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Neil Madden/API Security in Action epub (1)/API Security in Action epub - Neil Madden.epub",
+        "timestamp": "2025-08-31T16:31:18.860Z",
+        "title": "API Security in Action epub"
+      },
+      {
+        "authors": [
+          "Robert C. Martin"
+        ],
+        "key": "/home/nahuel/Dropbox/Apps/Books/Clean Architecture.epub",
+        "pathtoebook": "/home/nahuel/Dropbox/Apps/Books/Clean Architecture.epub",
+        "timestamp": "2025-08-31T07:44:12.496Z",
+        "title": "Clean Architecture: A Craftsman's Guide to Software Structure and Design (Robert C. Martin Series)"
+      },
+      {
+        "authors": [
+          "Robert C. Martin"
+        ],
+        "key": "/home/nahuel/personal/hub/books/Robert C. Martin/Clean Architecture_ A Craftsman's Guide to Software Structure and Design (Robert C. Martin Serie (3)/Clean Architecture_ A Craftsman's Guide to - Robert C. Martin.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Robert C. Martin/Clean Architecture_ A Craftsman's Guide to Software Structure and Design (Robert C. Martin Serie (3)/Clean Architecture_ A Craftsman's Guide to - Robert C. Martin.epub",
+        "timestamp": "2025-08-31T07:40:27.351Z",
+        "title": "Clean Architecture: A Craftsman's Guide to Software Structure and Design (Robert C. Martin Series)"
+      },
+      {
+        "authors": [
+          "Donald E. Knuth"
+        ],
+        "key": "/home/nahuel/personal/hub/books/Donald E. Knuth/The Art of Computer Programming_ Volume 1 _ Fundamental Algorithms, Third Edition (15)/The Art of Computer Programming_ Volume 1 - Donald E. Knuth.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Donald E. Knuth/The Art of Computer Programming_ Volume 1 _ Fundamental Algorithms, Third Edition (15)/The Art of Computer Programming_ Volume 1 - Donald E. Knuth.epub",
+        "timestamp": "2025-08-31T07:37:14.986Z",
+        "title": "The Art of Computer Programming: Volume 1 / Fundamental Algorithms, Third Edition"
+      },
+      {
+        "key": "/home/nahuel/Dropbox/Apps/Books/The Go Programming Language.pdf",
+        "pathtoebook": "/home/nahuel/Dropbox/Apps/Books/The Go Programming Language.pdf",
+        "timestamp": "2025-08-31T07:27:31.522Z",
+        "title": "The Go Programming Language"
+      },
+      {
+        "authors": [
+          "Mario Benedetti"
+        ],
+        "key": "/home/nahuel/personal/hub/books/Mario Benedetti/La Tregua (39)/La Tregua - Mario Benedetti.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Mario Benedetti/La Tregua (39)/La Tregua - Mario Benedetti.epub",
+        "timestamp": "2025-08-07T20:24:45.750Z",
+        "title": "La Tregua"
+      },
+      {
+        "authors": [
+          "HARUKI MURAKAMi"
+        ],
+        "key": "/home/nahuel/personal/hub/books/HARUKI MURAKAMi/Tokio Blues (norwegian Wood) (40)/Tokio Blues (norwegian Wood) - HARUKI MURAKAMi.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/HARUKI MURAKAMi/Tokio Blues (norwegian Wood) (40)/Tokio Blues (norwegian Wood) - HARUKI MURAKAMi.epub",
+        "timestamp": "2025-08-06T04:08:35.926Z",
+        "title": "Tokio Blues (norwegian Wood)"
+      },
+      {
+        "authors": [
+          "Hermann Hesse"
+        ],
+        "key": "/home/nahuel/personal/hub/books/Hermann Hesse/Siddhartha (38)/Siddhartha - Hermann Hesse.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Hermann Hesse/Siddhartha (38)/Siddhartha - Hermann Hesse.epub",
+        "timestamp": "2025-08-06T03:57:48.762Z",
+        "title": "Siddhartha"
+      },
+      {
+        "key": "/home/nahuel/personal/hub/books/Unknown/Orden (37)/Orden - Unknown.md",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Unknown/Orden (37)/Orden - Unknown.md",
+        "timestamp": "2025-07-14T02:32:07.921Z",
+        "title": "Orden"
+      },
+      {
+        "key": "/home/nahuel/personal/hub/books/Unknown/RFC2616.pdf (31)/RFC2616.pdf - Unknown.pdf",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Unknown/RFC2616.pdf (31)/RFC2616.pdf - Unknown.pdf",
+        "timestamp": "2025-07-14T02:28:32.864Z",
+        "title": "Microsoft Word - RFC2616.doc"
+      },
+      {
+        "authors": [
+          "Donald E. Knuth"
+        ],
+        "key": "/home/nahuel/personal/hub/books/Donald E. Knuth/The Art of Computer Programming_ Volume 1 _ Fundamental Algorithms, Third Edition (6)/The Art of Computer Programming_ Volume 1 - Donald E. Knuth.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Donald E. Knuth/The Art of Computer Programming_ Volume 1 _ Fundamental Algorithms, Third Edition (6)/The Art of Computer Programming_ Volume 1 - Donald E. Knuth.epub",
+        "timestamp": "2025-07-14T02:14:00.491Z",
+        "title": "The Art of Computer Programming: Volume 1 / Fundamental Algorithms, Third Edition"
+      },
+      {
+        "key": "/home/nahuel/personal/hub/books/Unknown/Orden (2)/Orden - Unknown.md",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Unknown/Orden (2)/Orden - Unknown.md",
+        "timestamp": "2025-07-14T02:08:33.307Z",
+        "title": "Orden"
+      },
+      {
+        "authors": [
+          "Neil Madden"
+        ],
+        "key": "/home/nahuel/personal/hub/books/Neil Madden/API Security in Action epub (9)/API Security in Action epub - Neil Madden.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Neil Madden/API Security in Action epub (9)/API Security in Action epub - Neil Madden.epub",
+        "timestamp": "2025-07-14T02:03:55.507Z",
+        "title": "API Security in Action epub"
+      },
+      {
+        "authors": [
+          "Robert C. Martin"
+        ],
+        "key": "/home/nahuel/personal/hub/books/Robert C. Martin/Clean Architecture_ A Craftsman's Guide to Software Structure and Design (Robert C. Martin Serie (8)/Clean Architecture_ A Craftsman's Guide to - Robert C. Martin.epub",
+        "pathtoebook": "/home/nahuel/personal/hub/books/Robert C. Martin/Clean Architecture_ A Craftsman's Guide to Software Structure and Design (Robert C. Martin Serie (8)/Clean Architecture_ A Craftsman's Guide to - Robert C. Martin.epub",
+        "timestamp": "2025-07-14T02:02:43.176Z",
+        "title": "Clean Architecture: A Craftsman's Guide to Software Structure and Design (Robert C. Martin Series)"
+      }
+    ],
+    "user_color_schemes": {
+      "*ppine": {
+        "background": "#18181a",
+        "foreground": "#e2e2e2",
+        "name": "ppine"
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 mkdir -p webp_output
 
 shopt -s nullglob  # hace que los globs vacíos se ignoren

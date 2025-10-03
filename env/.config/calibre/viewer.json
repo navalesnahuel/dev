@@ -1,0 +1,53 @@
+{
+  "geometry-of-print-to-pdf-geometry": {
+    "frame_geometry": {
+      "height": 314,
+      "width": 502,
+      "x": 701,
+      "y": 365
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 314,
+      "width": 502,
+      "x": 701,
+      "y": 365
+    },
+    "maximized": false,
+    "normal_geometry": {
+      "height": 314,
+      "width": 502,
+      "x": 701,
+      "y": 365
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAK9AAABbQAABLIAAAKmAAACvQAAAW0AAASyAAACpgAAAAAAAAAAB4AAAAK9AAABbQAABLIAAAKm"
+    },
+    "screen": {
+      "depth": 24,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1080,
+        "width": 1920,
+        "x": 0,
+        "y": 0
+      },
+      "index_in_screens_list": 0,
+      "manufacturer": "Samsung Electric Company",
+      "model": "S23B350",
+      "name": "HDMI-1",
+      "serial": "",
+      "size_in_logical_pixels": {
+        "height": 1080,
+        "width": 1920
+      },
+      "virtual_geometry": {
+        "height": 1080,
+        "width": 1920,
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}
