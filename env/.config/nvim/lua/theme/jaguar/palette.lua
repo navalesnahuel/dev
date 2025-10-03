@@ -1,31 +1,42 @@
 -- Definí tu propia paleta personalizada
 local palette = {
 
-	_nc = "#161616", -- fondo neutro o fondo del terminal
+	_nc = "#18181a", -- fondo neutro o fondo del terminal
 
-	base = "#161616", -- bg -- perfecto
-	text = "#d6d6d6", -- fg -- perfecto
+	base = "#18181a", -- bg -- perfecto
+	text = "#E2E2E2", -- fg -- perfecto
 
-	surface = "#141414", -- perfecto
-	overlay = "#181818", -- perfecto
+	surface = "#202124", -- perfecto
+	overlay = "#1F1F21", -- perfecto
 
-	muted = "#ffffff", -- a checkear
-	subtle = "#888888", -- comentarios y =, y {} -- a mejorar
+	muted = "#B8B8B8",
+	subtle = "#B8B8B8", -- comentarios y =, y {}
 
-	love = "#d9534f", -- red -- color perfecto
-	pine = "#7ae582", -- green -- color perfecto
-	gold = "#f0ad4e", -- yellow -- color perfecto
+	love = "#F97583", -- errores
 
-	rose = "#72FDFD", -- cyan -- color bien
-	foam = "#5fafa0", -- aqua -- color bien
-	iris = "#7C6F9E", -- lavanda grisáceo, sobrio y elegante -- a checkear
-	leaf = "#556B2F", -- verde oliva oscuro, natural y profundo -- a checkear
+	gold = "#E5ADF0", -- strings
+	pine = "#E5ADF0", -- keywords
+	rose = "#E5ADF0", -- nombres de funcion
+	foam = "#84ECEC", -- tipos
+	iris = "#E5ADF0", -- arguments y metodos
 
-	highlight_low = "#ffffff", -- a checkear
-	highlight_med = "#ffffff", -- a checkear
-	highlight_high = "#ffffff", -- a checkear
+	-- pine = "#61AFEF", -- keywords
+	-- foam = "#56B6C2", -- tipos
 
+	highlight_low = "#2a283e", -- a checkear
+	highlight_med = "#44415a", -- a checkear
+	highlight_high = "#56526e", -- a checkear
+
+	leaf = "#e2e2e2", -- no se que colores pone
 	none = "NONE",
+
+	-- magenta #c4a7e7
+	-- rosa #fca7ea
+	-- rojo #F97583
+	-- amarillo #E6C07B
+	-- verde #3CB371
+	-- azul #61AFEF
+	-- celeste #56B6C2
 }
 
 return palette

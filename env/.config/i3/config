@@ -13,7 +13,7 @@ exec_always feh --bg-fill $HOME/Pictures/wallpapers/rayo.png
 exec_always --no-startup-id nvidia-settings --assign DigitalVibrance=1023 
 exec --no-startup-id xinput --set-prop 9 "libinput Accel Profile Enabled" 0, 1
 exec --no-startup-id ghostty 
-exec --no-startup-id vivaldi
+exec --no-startup-id zen
 exec --no-startup-id flatpak run com.bitwarden.desktop
 exec --no-startup-id gtk-launch sonixd
 exec --no-startup-id gtk-launch thunderbird
@@ -75,7 +75,7 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 
 # Window assignments
 assign [class="ghostty"] $ws1
-assign [class="Vivaldi-stable"] $ws2
+assign [class="zen"] $ws2
 assign [class="thunderbird"] $ws10
 assign [class="obsidian"] $ws9
 assign [class="Sonixd"] $ws8

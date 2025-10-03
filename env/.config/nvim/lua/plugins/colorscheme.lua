@@ -114,7 +114,7 @@ return {
 			require("tokyonight").setup({
 				extend_background_behind_borders = true,
 				dim_inactive_windows = false,
-				style = "night",
+				style = "moon",
 				transparent = true,
 				styles = {
 					comments = { italic = false },
